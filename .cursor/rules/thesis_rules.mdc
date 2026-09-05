@@ -1,0 +1,20 @@
+---
+description: "Rules for LaTeX thesis formatting, APA 7 citations, and strict safety guardrails against rewriting content."
+globs: "*.tex, *.bib, *.cls"
+alwaysApply: true
+---
+
+# 🚨 STRICT SAFETY GUARDRAILS (CRITICAL)
+- DO NOT rewrite, summarize, or alter my prose, arguments, or scientific claims unless explicitly asked.
+- DO NOT change my document structure or delete text without asking for explicit permission first.
+- If a request requires modifying multiple files or deleting existing content, stop and ask for confirmation.
+
+# Citation Standards (APA 7th Edition)
+- Use standard APA 7 formatting. Assume the project uses `biblatex` with `style=apa`.
+- Use `\textcite{key}` for narrative citations and `\parencite{key}` for parenthetical citations.
+- Never invent citation keys. Only use keys from the `.bib` file.
+
+# LaTeX Best Practices
+- Tables: Always use `booktabs` (`\toprule`, `\midrule`, `\bottomrule`). No vertical lines.
+- Math: Use `amsmath` environments. 
+- Spacing: Do not hardcode spacing using `\vspace`. Rely on the document class.

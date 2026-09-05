@@ -1,0 +1,31 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.xdv
+*.dvi
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.nav
+*.snm
+*.vrb
+*.synctex(busy)
+
+# OS
+.DS_Store
+
+# Editor / tool caches
+.qodo/

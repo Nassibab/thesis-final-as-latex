@@ -1,0 +1,96 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage{geometry}
+\geometry{left=2.54cm, right=2.54cm, bottom=2.54cm, top=1.27cm, includefoot}
+
+\usepackage{fontspec}
+\setmainfont{Georgia}
+\usepackage{setspace}
+\singlespacing 
+\usepackage{microtype} 
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{11}{13}\bfseries\itshape}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{10}{12}\bfseries}{\thesubsubsection}{1em}{}
+
+\usepackage{caption}
+\captionsetup{font={bf, normalsize}, labelsep=period, name=Figure, justification=centering}
+
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib} 
+
+\usepackage{graphicx}
+\usepackage{booktabs} 
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    {\fontsize{14}{16}\selectfont Hochschule für angewandte Wissenschaften München\par}
+    {\fontsize{14}{16}\selectfont Fakultät für Informatik und Mathematik\par}
+    \vspace{3cm}
+    {\fontsize{20}{24}\bfseries\selectfont Titel der Arbeit\par}
+    \vspace{1.5cm}
+    {\fontsize{14}{16}\bfseries\selectfont Bachelorarbeit\par}
+    \vspace{2cm}
+    \begin{flushleft}
+        \normalsize
+        \textbf{Eingereicht von:}\\
+        $[$Vorname Name$]$\\
+        \textbf{Studiengang:} Betriebswirtschaft\\
+        \textbf{Matrikelnummer:} xxxxxxxx\\
+        \textbf{Kontaktdaten:} $[$alias$]$@hm.edu\\
+        \vspace{1cm}
+        \textbf{Erstprüfer:} Prof. Dr. Markus Thimmel\\
+        \textbf{Zweitprüfer:} Prof. Dr. Christoph Ertl\\
+        \textbf{Abgabedatum:} xx.xx.xxxx
+    \end{flushleft}
+\end{titlepage}
+
+\newpage
+\section*{Ggf. Sperrvermerk}
+Die vorliegende Arbeit beinhaltet interne vertrauliche Informationen der Firma $[$Alpha GmbH$]$.\par
+Die Weitergabe des Inhalts der Arbeit im Gesamten oder in Teilen sowie das Anfertigen von Kopien und Abschriften – auch in digitaler Form – sind grundsätzlich untersagt.\par
+Ausnahmen bedürfen der schriftlichen Zustimmung der Firma.
+
+\vspace{2cm}
+\section*{Ggf. General Disclaimer KI-Nutzung}
+Die vorliegende Arbeit wurde mithilfe Künstlicher Intelligenz auf Grammatik, Stil und Rechtsschreibung überprüft. Der inhaltliche Sinn sowie die wissenschaftlichen Aussagen/Interpretation des Textes wurden dabei nicht verändert.\par
+\textbf{Beispiel aus dem Text:}\par
+\textit{Vorher:} Die Auswertung von den Interviews zeigt, das mittelständische Unternehmen mit vielen modernen betrieblichen Anforderungen konfrontiert sind, die mehr Einfluss auf die Ausgestaltung und Nutzung der Kostenrechnung haben.\par
+\textit{Nachher:} Die Auswertung der Interviews zeigt, dass mittelständische Unternehmen mit einer Reihe moderner betrieblicher Anforderungen konfrontiert sind, die sich zunehmend auf die Ausgestaltung und Nutzung der Kostenrechnung auswirken.
+
+\newpage
+\section*{Abstract / Kurzfassung}
+$[$Your abstract goes here.$]$
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+Bitte halten Sie sich bei der Erstellung Ihrer Seminararbeit an die folgenden grundlegenden Formatierungsrichtlinien. Der gesamte Text ist im Blocksatz zu setzen. \textcite{alridhawi2020} discusses AI challenges, while other works cover IoT networks \parencite{elayan2021}.
+
+\section{Abbildungen und Tabellen}
+Die Begriffe Figure und Table sind immer auszuschreiben.
+
+\begin{table}[hbt!]
+\centering
+\caption{A Very Nice Table}
+\label{tab:nice_table}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Treatment 1} & \textbf{Treatment 2} \\
+\midrule
+Setting A & 125 & 95 \\
+Setting B & 85 & 102 \\
+Setting C & 98 & 85 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+\printbibliography
+
+\end{document}

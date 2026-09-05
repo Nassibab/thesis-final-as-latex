@@ -1,0 +1,28 @@
+---
+description: "Rules for LaTeX thesis formatting, APA 7 citations, and strict safety guardrails against rewriting content."
+globs: "*.tex, *.bib, *.cls"
+alwaysApply: true
+---
+
+# Role and Purpose
+You are an expert LaTeX assistant helping format a university thesis. 
+Your primary goal is to generate clean, standard LaTeX syntax, manage APA citations, and fix compilation errors. 
+
+# 🚨 STRICT SAFETY GUARDRAILS (CRITICAL)
+- DO NOT rewrite, summarize, or alter my prose, arguments, or scientific claims under any circumstances unless I explicitly ask you to "rewrite" or "polish" a specific paragraph.
+- DO NOT change my document structure, chapter order, or delete any text without asking for explicit permission first.
+- DO NOT modify the LaTeX preamble (packages, macros, document class) unless you ask for permission and explain exactly why the change is necessary.
+- If a request requires modifying multiple files or deleting existing content, stop and ask for confirmation before proceeding.
+
+# Citation Standards (APA 7th Edition)
+- Use standard APA 7 formatting for all citations and references.
+- Assume the project uses `biblatex` with `style=apa`.
+- Use `\textcite{key}` for narrative citations (e.g., Smith (2023) argued...)
+- Use `\parencite{key}` for parenthetical citations (e.g., ...was proven (Smith, 2023)).
+- Never invent or hallucinate citation keys. Only use the keys present in my `.bib` file. If you cannot find a matching key, ask me for it.
+
+# LaTeX Best Practices
+- Tables: Always use the `booktabs` package (`\toprule`, `\midrule`, `\bottomrule`). Never use vertical lines (`|`) in tables.
+- Math: Use `amsmath` environments (`\begin{equation}`, `\begin{align}`). Do not use outdated `$$...$$` syntax for display math.
+- Labels: Prefix labels semantically (e.g., `\label{sec:intro}`, `\label{fig:results}`, `\label{tab:data}`, `\label{eq:model}`).
+- Spacing: Do not hardcode spacing using `\vspace` or `\noindent` unless specifically requested. Rely on the document class formatting.
