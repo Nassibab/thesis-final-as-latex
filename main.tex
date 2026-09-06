@@ -1,96 +1,340 @@
-\documentclass[10pt, a4paper]{article}
+\documentclass[10pt,a4paper]{article}
+
+% ================================================================
+% PAGE LAYOUT
+% ================================================================
 
 \usepackage{geometry}
-\geometry{left=2.54cm, right=2.54cm, bottom=2.54cm, top=1.27cm, includefoot}
+
+\geometry{
+    left=2.54cm,
+    right=2.54cm,
+    bottom=2.54cm,
+    top=1.27cm,
+    includefoot
+}
+
+
+% ================================================================
+% FONT AND LANGUAGE
+% ================================================================
 
 \usepackage{fontspec}
 \setmainfont{Georgia}
+
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+
+% ================================================================
+% TEXT FORMATTING
+% ================================================================
+
 \usepackage{setspace}
-\singlespacing 
-\usepackage{microtype} 
+\singlespacing
+
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+
+% ================================================================
+% HEADINGS
+% ================================================================
 
 \usepackage{titlesec}
-\titleformat{\section}{\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\fontsize{11}{13}\bfseries\itshape}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\fontsize{10}{12}\bfseries}{\thesubsubsection}{1em}{}
 
-\usepackage{caption}
-\captionsetup{font={bf, normalsize}, labelsep=period, name=Figure, justification=centering}
+\titleformat{\section}
+{\normalfont\fontsize{13}{15}\bfseries}
+{\thesection}{1em}{}
 
-\usepackage[backend=biber, style=apa]{biblatex}
-\addbibresource{references.bib} 
+\titleformat{\subsection}
+{\normalfont\fontsize{11}{13}\bfseries\itshape}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\fontsize{10}{12}\bfseries}
+{\thesubsubsection}{1em}{}
+
+
+% ================================================================
+% FIGURES AND TABLES
+% ================================================================
 
 \usepackage{graphicx}
-\usepackage{booktabs} 
+\usepackage{booktabs}
+\usepackage{caption}
+
+\captionsetup{
+    font={bf,normalsize},
+    labelsep=period,
+    justification=centering
+}
+
+
+% ================================================================
+% REFERENCES
+% ================================================================
+
+\usepackage[
+    backend=biber,
+    style=apa
+]{biblatex}
+
+\addbibresource{references.bib}
+
+
+% ================================================================
+% LINKS
+% ================================================================
+
+\usepackage[hidelinks]{hyperref}
+
+
+% ================================================================
+% CONFIDENTIALITY NOTICE SETTING
+% ================================================================
+
+\newif\ifconfidential
+\confidentialfalse
+
+
+% ================================================================
+% DOCUMENT
+% ================================================================
 
 \begin{document}
 
+
+% ================================================================
+% TITLE PAGE
+% ================================================================
+
 \begin{titlepage}
+
     \centering
-    {\fontsize{14}{16}\selectfont Hochschule für angewandte Wissenschaften München\par}
-    {\fontsize{14}{16}\selectfont Fakultät für Informatik und Mathematik\par}
+
+    {\fontsize{14}{16}\selectfont
+    Munich University of Applied Sciences\par}
+
+    {\fontsize{14}{16}\selectfont
+    HM Business School\par}
+
     \vspace{3cm}
-    {\fontsize{20}{24}\bfseries\selectfont Titel der Arbeit\par}
+
+    {\fontsize{20}{24}\bfseries\selectfont
+    From Vibe Coding to Production-Ready Software\par}
+
+    \vspace{0.5cm}
+
+    {\fontsize{15}{19}\selectfont
+    Developing and Evaluating a Governance and Development Framework
+    for Generative AI-Assisted Software Creation by Non-Technical Employees
+    \par}
+
     \vspace{1.5cm}
-    {\fontsize{14}{16}\bfseries\selectfont Bachelorarbeit\par}
+
+    {\fontsize{14}{16}\bfseries\selectfont
+    Master's Thesis\par}
+
     \vspace{2cm}
+
     \begin{flushleft}
+
         \normalsize
-        \textbf{Eingereicht von:}\\
-        $[$Vorname Name$]$\\
-        \textbf{Studiengang:} Betriebswirtschaft\\
-        \textbf{Matrikelnummer:} xxxxxxxx\\
-        \textbf{Kontaktdaten:} $[$alias$]$@hm.edu\\
-        \vspace{1cm}
-        \textbf{Erstprüfer:} Prof. Dr. Markus Thimmel\\
-        \textbf{Zweitprüfer:} Prof. Dr. Christoph Ertl\\
-        \textbf{Abgabedatum:} xx.xx.xxxx
+
+        \textbf{Submitted by:}\\
+        Nassib Aboud\\[0.5cm]
+
+        \textbf{Degree Program:}\\
+        Business Information Systems (M.Sc.)\\[0.5cm]
+
+        \textbf{Matriculation Number:}\\
+        34140924\\[0.5cm]
+
+        \textbf{Contact:}\\
+        nassib.aboud@hm.edu\\[1cm]
+
+        \textbf{First Examiner:}\\
+        Prof. Dr. Markus Thimmel\\[0.5cm]
+
+        \textbf{Second Examiner:}\\
+        Prof. Dr. Christoph Ertl\\[0.5cm]
+
+        \textbf{Submission Date:}\\
+        30 October 2026
+
     \end{flushleft}
+
 \end{titlepage}
 
+
+% ================================================================
+% OPTIONAL CONFIDENTIALITY NOTICE
+% ================================================================
+
+\ifconfidential
+
 \newpage
-\section*{Ggf. Sperrvermerk}
-Die vorliegende Arbeit beinhaltet interne vertrauliche Informationen der Firma $[$Alpha GmbH$]$.\par
-Die Weitergabe des Inhalts der Arbeit im Gesamten oder in Teilen sowie das Anfertigen von Kopien und Abschriften – auch in digitaler Form – sind grundsätzlich untersagt.\par
-Ausnahmen bedürfen der schriftlichen Zustimmung der Firma.
+
+\section*{Confidentiality Notice}
+
+This Master's thesis contains confidential and proprietary information
+of SIXT SE.
+
+The thesis is submitted solely for examination purposes at Munich
+University of Applied Sciences.
+
+The contents of this thesis, in whole or in part, may not be disclosed,
+reproduced, made publicly accessible, or otherwise distributed to third
+parties without prior authorization, except where disclosure is required
+for examination and administrative purposes by Munich University of
+Applied Sciences.
+
+Any further use, publication, reproduction, or disclosure requires the
+prior written consent of the relevant parties.
+
+\fi
+
+
+% ================================================================
+% DECLARATION ON THE USE OF GENERATIVE AI
+% ================================================================
+
+\newpage
+
+\section*{Declaration on the Use of Generative AI}
+
+Generative artificial intelligence tools were used as supporting tools
+during the preparation of this Master's thesis.
+
+Their use included, where applicable, support with literature discovery,
+brainstorming and structuring, language and style improvement, critical
+review of written material, and assistance with software development
+and coding tasks conducted as part of the research.
+
+Generative AI outputs were not treated as independent academic sources.
+Academic claims and evidence were verified against the original sources
+where applicable.
+
+AI-generated suggestions, analyses, text, and code were critically
+reviewed, selected, modified, or rejected by the author.
+
+The author remains fully responsible for the research design,
+methodological decisions, interpretation of results, argumentation,
+conclusions, and final content of this thesis.
+
+The use of generative AI tools was conducted in accordance with the
+applicable requirements of Munich University of Applied Sciences and
+the principles of good scientific practice.
+
+
+% ================================================================
+% DECLARATION OF ORIGINALITY
+% ================================================================
+
+\newpage
+
+\section*{Declaration of Originality}
+
+I hereby declare that I have prepared this Master's thesis independently
+and that I have used only the sources, materials, and tools indicated
+in the thesis.
+
+All passages that have been taken directly or indirectly from published
+or unpublished sources have been identified accordingly.
+
+The use of generative artificial intelligence and other digital tools
+has been disclosed where required.
+
+I further declare that this thesis has not previously been submitted,
+in the same or substantially similar form, as part of another examination
+procedure.
 
 \vspace{2cm}
-\section*{Ggf. General Disclaimer KI-Nutzung}
-Die vorliegende Arbeit wurde mithilfe Künstlicher Intelligenz auf Grammatik, Stil und Rechtsschreibung überprüft. Der inhaltliche Sinn sowie die wissenschaftlichen Aussagen/Interpretation des Textes wurden dabei nicht verändert.\par
-\textbf{Beispiel aus dem Text:}\par
-\textit{Vorher:} Die Auswertung von den Interviews zeigt, das mittelständische Unternehmen mit vielen modernen betrieblichen Anforderungen konfrontiert sind, die mehr Einfluss auf die Ausgestaltung und Nutzung der Kostenrechnung haben.\par
-\textit{Nachher:} Die Auswertung der Interviews zeigt, dass mittelständische Unternehmen mit einer Reihe moderner betrieblicher Anforderungen konfrontiert sind, die sich zunehmend auf die Ausgestaltung und Nutzung der Kostenrechnung auswirken.
+
+Munich, 6 September 2026
+
+\vspace{1.5cm}
+
+\rule{7cm}{0.4pt}\\
+Nassib Aboud
+
+
+% ================================================================
+% ABSTRACT
+% ================================================================
 
 \newpage
-\section*{Abstract / Kurzfassung}
-$[$Your abstract goes here.$]$
+
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\textit{Insert abstract here.}
+
+
+% ================================================================
+% TABLE OF CONTENTS
+% ================================================================
 
 \newpage
+
 \tableofcontents
-\newpage
 
-\section{Einleitung}
-Bitte halten Sie sich bei der Erstellung Ihrer Seminararbeit an die folgenden grundlegenden Formatierungsrichtlinien. Der gesamte Text ist im Blocksatz zu setzen. \textcite{alridhawi2020} discusses AI challenges, while other works cover IoT networks \parencite{elayan2021}.
 
-\section{Abbildungen und Tabellen}
-Die Begriffe Figure und Table sind immer auszuschreiben.
-
-\begin{table}[hbt!]
-\centering
-\caption{A Very Nice Table}
-\label{tab:nice_table}
-\begin{tabular}{lcc}
-\toprule
- & \textbf{Treatment 1} & \textbf{Treatment 2} \\
-\midrule
-Setting A & 125 & 95 \\
-Setting B & 85 & 102 \\
-Setting C & 98 & 85 \\
-\bottomrule
-\end{tabular}
-\end{table}
+% ================================================================
+% MAIN THESIS
+% ================================================================
 
 \newpage
+
+\section{Introduction}
+
+% Insert thesis text here.
+
+
+\section{Theoretical Background}
+
+% Insert thesis text here.
+
+
+\section{Research Methodology}
+
+% Insert thesis text here.
+
+
+\section{Research and Development Cycles}
+
+% Insert thesis text here.
+
+
+\section{Evaluation and Findings}
+
+% Insert thesis text here.
+
+
+\section{Discussion}
+
+% Insert thesis text here.
+
+
+\section{Conclusion}
+
+% Insert thesis text here.
+
+
+% ================================================================
+% REFERENCES
+% ================================================================
+
+\newpage
+
 \printbibliography
+
+
+% ================================================================
+% END
+% ================================================================
 
 \end{document}
