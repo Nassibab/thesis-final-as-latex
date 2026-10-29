@@ -1,0 +1,106 @@
+block-beta
+    columns 9
+
+    INPUT["FROM PROTOTYPING
+Reviewed specification
+User feedback and open questions"]:2
+    space:5
+    OUTPUT["TO THE LIFECYCLE
+Accepted change and evidence
+For later pilot and release decisions"]:2
+
+    SPEC["Define the production change
+Refine prototype findings
+Add criteria, contracts and quality targets"]:2
+    space:5
+    ACCEPT["Checkpoint B: accept the change
+Citizen developer confirms business fit
+Expert review when triggered"]:2
+
+    space
+    APPROVE["Checkpoint A: approve the brief
+Confirm scope, constraints and risk
+Apply organisational approval rules"]:2
+    space:3
+    block:AUDIT:2
+        columns 1
+
+        AUDIT_HEADER["COMPILE THE EVIDENCE
+Traceability for acceptance"]
+
+        AUDITOR["Auditing Agent
+Link requirements, code and tests
+Collect results and remaining findings
+Prepare the evidence package"]
+    end
+    space
+
+    space:2
+    block:PLANNING:2
+        columns 1
+
+        PLAN_HEADER["PREPARE THE WORK
+Divide the approved change into tasks"]
+
+        PLANNER["Planning Agent
+Divide the change into small, testable tasks
+Define task contracts and expected outcomes
+Record the ordered plan"]
+    end
+    space
+    block:VERIFY:2
+        columns 1
+
+        VERIFY_HEADER["VERIFY THE CHANGE
+Independent checks against the specification"]
+
+        VERIFIER["Verification Agent
+Run independently written tests
+Check integration and regressions
+Report failures back for repair"]
+    end
+    space:2
+
+    space:3
+    block:EXECUTION:3
+        columns 1
+
+        HEADER["IMPLEMENTATION AND TEST PREPARATION
+Independent work in parallel"]
+
+        BUILD["Build Agent
+Repeat SCOPE-V for each task
+Specify, Constrain, Orchestrate, Prove, Evolve
+Verify before, during and after building"]
+
+        DESIGN["Test Designer Agent
+Write tests from the approved specification
+Without seeing the implementation"]
+    end
+    space:3
+
+    style INPUT fill:#f2f3f5,stroke:#7b8490,color:#29313b
+    style OUTPUT fill:#f2f3f5,stroke:#7b8490,color:#29313b
+
+    style SPEC fill:#e7f1ff,stroke:#4678b8,color:#172c46
+
+    style APPROVE fill:#fff0cd,stroke:#ab7400,color:#362600
+    style ACCEPT fill:#fff0cd,stroke:#ab7400,color:#362600
+
+    style AUDIT fill:#e7f4e9,stroke:#478451
+    style AUDIT_HEADER fill:transparent,stroke:transparent,color:#203b25
+    style AUDITOR fill:#e7f4e9,stroke:#478451,color:#203b25
+
+    style PLANNING fill:#e7f1ff,stroke:#4678b8
+    style PLAN_HEADER fill:transparent,stroke:transparent,color:#172c46
+    style PLANNER fill:#e7f1ff,stroke:#4678b8,color:#172c46
+
+    style VERIFY fill:#e7f4e9,stroke:#478451
+    style VERIFY_HEADER fill:transparent,stroke:transparent,color:#203b25
+    style VERIFIER fill:#e7f4e9,stroke:#478451,color:#203b25
+
+    style EXECUTION fill:#f4effb,stroke:#8054ab
+    style HEADER fill:transparent,stroke:transparent,color:#51336e
+    style BUILD fill:#eee7fa,stroke:#8054ab,color:#51336e
+    style DESIGN fill:#e7f1ff,stroke:#4678b8,color:#172c46
+
