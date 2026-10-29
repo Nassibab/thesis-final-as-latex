@@ -369,10 +369,28 @@ Generative AI works differently. Large Language Models (LLMs) are probabilistic.
 
 Why this matters for the SIXT thesis: the Productivity–Reliability Paradox. This deterministic vs. probabilistic split is the root cause of the Productivity–Reliability Paradox (PRP) described by \textcite{farrag2026}. Low-code has built-in guardrails and is therefore safe but slow and narrow. Vibe coding is fast and open but has no built-in guardrails; if the developer blindly accepts every suggestion, the codebase quickly fills up with hidden or "shadow" technical debt \parencite{farrag2026,kobiella2026}. The idea of this thesis is to bridge the two: to take a very fast but volatile probabilistic engine (vibe coding) and wrap it inside a strict deterministic harness — CI/CD pipelines, automated security tests, and expert stage-gates — so that all AI-generated code must pass through fixed, machine-checked rules before it reaches production. In the terms of \textcite{galster2026}, this is harness engineering: configuring the environment around the model (context files, skills, sub-agents, MCP tools, hooks) so the model can move fast without breaking the rules of the enterprise. The goal is simple: the speed of vibe coding, with the safety of classic software engineering.
 
-\subsection{Generative AI-Assisted Development in software development}
+\subsection{Software development before and after GenAI}
 
-% Define GenAI-assisted development, vibe coding,
-% and citizen development. Distinguish them from low-code/no-code.
+add pic here
+Developing a governance and development framework for citizen developers requires an understanding of how generative artificial intelligence (GenAI) changes the software development life cycle (SDLC). This includes both the activities needed to turn a business need into operational software and the distribution of responsibilities across product, design, engineering and operations.
+
+Before the widespread adoption of GenAI coding tools, a representative iterative development cycle began with identifying business and user needs and translating them into prioritised requirements. Product managers and product owners coordinated priorities, designers developed interaction concepts, and software engineers implemented the solution. Implementation involved repeated testing and debugging, followed by code review, integration and deployment. Once the software entered production, operational monitoring, incidents and user feedback informed corrections and new development tasks. These activities formed a continuous feedback cycle rather than a strictly linear sequence. The precise division of responsibilities varied between organisations. This description provides a simplified baseline for the lifecycle activities discussed by \textcite{mandl2026} and the role-specific handoffs examined by \textcite{li2026product}.
+
+Code implementation required substantial time and technical expertise, but it should not be described as the sole universal bottleneck of traditional software development. Delivery also depended on requirements clarification, review, integration, testing and release. Accelerating implementation alone therefore cannot guarantee an equivalent improvement in delivered software. \textcite{demirer2026} explain this through the weak-link hypothesis: gains in one activity are constrained by complementary activities elsewhere in the production process.
+
+With GenAI, users can express requirements in natural language and ask coding assistants or agents to generate, modify and test implementations. \textcite{meske2025} describe this as a shift in how human intent is translated into software: people increasingly communicate their goals through dialogue, while AI systems infer and produce the corresponding implementation. In product teams, \textcite{li2026product} identify an iterative workflow comprising ideation, generation, debugging, and testing and review. These activities can overlap more closely because a functional prototype can be generated and evaluated directly, reducing some of the handoffs between initial ideas, design and implementation.
+
+The wider development lifecycle nevertheless remains necessary. Generated changes must still be assessed against requirements, checked for technical quality, integrated with existing systems and prepared for deployment. After deployment, monitoring and user feedback continue to identify defects and new requirements. GenAI can support these activities, including test generation, review, diagnosis and maintenance, but its outputs still require appropriate verification and accountable decisions \parencite{mandl2026}. Faster prototyping consequently does not establish production readiness: \textcite{kobiella2026} find that non-technical users can create useful prototypes while continuing to encounter substantial barriers in deployment and long-term maintenance.
+
+As code generation accelerates, review, verification and integration can become more prominent bottlenecks. In their working paper, \textcite{demirer2026} report cumulative increases of approximately 240% in commits across successive generations of AI coding tools, compared with approximately 30% in releases. These are different output measures, indicating that increased coding activity translates only partly into shipped software. More directly relevant to differences in experience, \textcite{asdaque2026} find that contributions from less-experienced AI-assisted developers attract more review comments and take longer to resolve than those from more-experienced contributors. Their observational findings suggest that easier code generation can shift additional work onto reviewers; they do not establish that the same effects necessarily occur among non-technical employees in an enterprise setting.
+
+A related challenge concerns compounding error and compounding correctness, illustrated in Figure~\ref{fig}. These terms are used here as a conceptual synthesis rather than as established quantitative laws. Compounding error describes a pattern in which later changes build on unresolved defects or incorrect assumptions, increasing the difficulty of subsequent diagnosis and correction. This interpretation is consistent with the risks identified by \textcite{meske2025}, including unpredictable rewrites, unintended side effects and accumulating technical debt. Compounding correctness describes the intended alternative: preserving verified behaviour while introducing controlled changes. For example, \textcite{wang2026vibecontract} propose explicit task-level contracts that connect requirements, generated code and continuous verification. Such mechanisms can support cumulative quality improvement, but passing checks cannot guarantee correctness or maintainability.
+
+
+GenAI also makes some professional boundaries more permeable, particularly during exploration and prototyping. \textcite{li2026product} report that designers, engineers and product managers can explore and develop prototypes with fewer sequential handoffs. Product owners and business specialists can therefore participate more directly in implementation, while engineers can use AI assistance to explore interfaces and work across technical tasks. However, this expansion of participation does not make professional expertise interchangeable. \textcite{kobiella2026} show that non-technical users' ability to produce and assess visible prototype behaviour does not extend equally to evaluating underlying code quality, security or maintainability.
+For this thesis, these findings motivate a framework that combines broader participation with explicit responsibilities and verification requirements. Citizen developers can contribute domain knowledge, explore solutions and assess whether prototypes meet business needs. Progress towards production requires additional technical, organisational and operational support, alongside appropriately qualified review.
+
+
 
 \subsection{Capabilities and Limitations of Non-Technical Developers}
 % Explain what existing research says people can build,
@@ -453,6 +471,176 @@ Why this matters for the SIXT thesis: the Productivity–Reliability Paradox. Th
 \subsubsection{The Stage-Gate Process}
 % Describe the stages, the gates between them,
 % and the criteria for passing each gate.
+
+AI-assisted development changes where the cost of software lies. Generating code has become fast and cheap (see paragraph software dev before and after GenAI TBD). Specifying, verifying, integrating and taking responsibility for that code has not, and these activities now make up a larger share of the total cost of a change \parencite{KEY-wangliu2026}. When more code is produced than can be checked, teams build up \emph{verification debt}: weak tests, hidden regressions and a growing review burden. The time needed for review and clean-up can cancel out the speed gained through AI \parencite{koch2026agentic}.
+
+For citizen developers, these risks are higher. They can judge whether software looks and behaves as intended, but not whether the code is secure or maintainable. They also find the step from a prototype to a deployed product especially difficult \parencite{kobiella2026}. Applications built outside IT can turn into shadow IT and technical debt that the organisation later has to maintain \parencite{KEY-viljoen2025}.
+
+These conditions call for an approach that limits investment until uncertainty has been reduced. A stage-gate process does this. Work is divided into stages, and a gate between two stages decides whether the work may continue. Each gate unlocks more resources: time, budget, data access, technical support and users. Early stages are cheap and tightly restricted. Later stages receive more support but must show more evidence. An idea therefore does not receive production-level support just because it is attractive, and a prototype is not released just because it works.
+
+Gates also make it possible to match oversight to risk. Human oversight adds value, but it is costly when applied to every task in the same way \parencite{KEY-kang2026}. Reviewing everything in depth would overload scarce experts, while reviewing too little would let risky applications reach users. In addition, each gate has a named decision-maker. This prevents an application from being released before anyone has accepted responsibility for its remaining risks \parencite{KEY-wangliu2026}.
+
+The process must, however, remain lightweight. Excessive control can demotivate citizen developers, whose participation is often voluntary \parencite{KEY-viljoen2025}. The framework therefore keeps the number of stages small, uses the same decision logic at every gate and lets low-risk applications pass with little effort.
+
+The logic of deciding early before investing more is also found in MeRGE, the Method for Responsible GenAI-Based Information Systems Engineering. Its first phase checks whether a use case is realistic, in order to avoid unnecessary, time-consuming and resource-intensive work later \parencite{fetzer2026}. MeRGE was, however, not designed for vibe coding or citizen development. It guides organisations in engineering information systems that contain GenAI, such as an HR chatbot based on a large language model. \textcite{fetzer2026} developed it in a twelve-month action design research project at a German premium car manufacturer. This thesis addresses a different object: not software that contains GenAI, but software that non-technical employees build using GenAI. MeRGE therefore does not cover the controls that matter most here, such as how AI-generated code is verified against requirements or how a citizen-built prototype moves into production development. It is also not a formal gate framework with pass and fail criteria, and it excludes the maintenance of systems after deployment \parencite{fetzer2026}.
+
+MeRGE is nevertheless used in this thesis because its organisational logic does not depend on this difference. Deciding early whether a use case is worth pursuing, linking business value with data sensitivity and risk, involving experts at defined points and introducing software through a controlled pilot apply to any internally developed software. MeRGE is also close to the setting of this thesis: it was developed with action design research in a large German company and includes an HR use case. This thesis therefore adopts MeRGE selectively. Its Precheck and Conceptualization phases inform the early screening at G1 and G2, and its Quality and Deployment phases inform the readiness checks, approvals and pilot at G4 and G5. Its GenAI-specific measures, such as protection against harmful outputs, are not adopted. The transition from prototype to production, the controls for AI-assisted coding and the operation stage are added by this thesis.
+
+\paragraph{Overall structure}
+
+The framework moves an application through six stages, each followed by a gate (Table~\ref{tab:stage-gate-overview}).
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption{Stages and gates of the framework (own representation).}
+    \label{tab:stage-gate-overview}
+    \begin{tabular}{p{3.0cm} p{6.4cm} p{4.2cm}}
+    \hline
+    \textbf{Stage} & \textbf{Main activity} & \textbf{Gate question} \\
+    \hline
+    1 Screen and scope & Check suitability, value, data and risk; set limits for the experiment & G1: May the idea be explored? \\
+    2 Prototype & Clarify the need with a prototype and validate it with users & G2: Is production development justified? \\
+    3 Build and verify & Build the application in small changes, each verified in an Agile-V cycle & G3: Is the planned scope complete and accepted? \\
+    4 Test application & Test the whole application: end-to-end, security, data protection, user acceptance and operational readiness & G4: Is it ready for real users? \\
+    5 Pilot & Use with a limited group; measure value and support effort & G5: Should it be released more widely? \\
+    6 Operate and reassess & Monitor, maintain and change the application; reassess value and risk & G6: Continue, change, hand over or retire? \\
+    \hline
+    \end{tabular}
+\end{table}
+
+Stages~2 and~3 are described in detail in Sections~TBD. The other stages build on MeRGE, which moves from an early check through conceptualisation, development and quality assurance to deployment \parencite{fetzer2026}. The framework departs from MeRGE in two ways. First, it adds a separate test stage for the whole application, because accepting individual changes does not show that the application works as a whole. Second, it adds an operation stage, because MeRGE excludes maintenance \parencite{fetzer2026}, while AI-built applications in particular risk losing the shared understanding of why they exist and how they work \parencite{KEY-storey2026}.
+
+The stage-gate process serves as the macro framework of this thesis. It steers the application as a whole and decides at each gate whether it may advance. Within individual stages, it adopts smaller frameworks that guide the detailed work. In stage~2, a lightweight V-shaped cycle adapted from Agile~V guides how the prototype is specified, built and evaluated \parencite{koch2026agile}. In stage~3, a fuller Agile-V cycle guides how each change is specified, built and accepted, and within each change the SCOPE-V cycle guides how an agent completes a single task \parencite{koch2026agile,koch2026agentic}. These smaller frameworks decide only about their own level of work. Accepting a change therefore never authorises a release; only the gates of the macro framework do.
+
+\paragraph{Gate decisions}
+
+Every gate uses the same five outcomes:
+
+\begin{itemize}
+    \item \textbf{Go:} the work moves to the next stage and receives the resources it needs.
+    \item \textbf{Revise:} the work stays in the current stage until open points are resolved.
+    \item \textbf{Restrict:} the work continues within narrower limits, for example fewer users or no personal data.
+    \item \textbf{Hand over:} the work moves to IT or professional developers, because it exceeds what citizen development can safely deliver.
+    \item \textbf{Stop:} the work ends, and what was learned is recorded.
+\end{itemize}
+
+Decisions are based on evidence, not on impressions. This follows the acceptance rule of Agentic Agile-V: AI-generated output is accepted not because it looks plausible but because it provides the evidence required for its risk level \parencite{koch2026agentic}. Each stage therefore has \emph{entry criteria}, which the previous gate must have confirmed, and \emph{exit criteria}, which the next gate checks. Stop criteria, such as an exceeded budget, are defined at the start. Although the stages are shown in sequence, work may return to an earlier stage when new findings require it, as MeRGE also recommends \parencite{fetzer2026}.
+
+\paragraph{Risk-based decisions}
+
+How strict a gate is depends on risk. The framework assigns each application a risk tier from R0 (exploratory) to R3 (high assurance), based on the levels proposed in Agentic Agile-V \parencite{koch2026agentic}. The tier is set at G1, confirmed at G2 and reviewed at later gates. It decides who must approve and how much evidence is required. If the tier is uncertain, the higher tier applies, following the fail-safe principle of \textcite{KEY-kang2026}. Applications in the highest tier are not developed by citizen developers alone but handed over to IT or developed jointly. Individual changes in stage~3 receive their own tier, which may be lower than the tier of the application but never higher. The tiers and their criteria are explained in Section~TBD.
+
+\paragraph{Roles and responsibilities}
+
+
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption{Roles in the stage-gate framework (own representation).}
+    \label{tab:stage-gate-roles}
+    \begin{tabular}{p{3.2cm} p{6.0cm} p{4.4cm}}
+    \hline
+    \textbf{Role} & \textbf{Responsible for} & \textbf{Does not} \\
+    \hline
+    End user & Using the application, giving feedback in prototype walkthroughs, user acceptance tests and the pilot & Approve releases \\
+    Citizen developer & Business requirements, prototype, feature specification, business acceptance & Set the risk tier or give technical approval \\
+    Business owner & Business value, budget and overall accountability for the application & -- \\
+    IT reviewer & System specification, technical platform, technical approval & Define business requirements \\
+    Specialists & Security, data protection and employee-representation checks when triggered & Review routine changes \\
+    Operations owner & Support, monitoring and incidents after release & -- \\
+    AI agents & Planning, building, testing and compiling evidence & Approve anything \\
+    \hline
+    \end{tabular}
+\end{table}
+
+The framework distinguishes seven roles (Table~\ref{tab:stage-gate-roles}). In the setting of this thesis, the end user, the citizen developer and the business owner are often the same person: an HR employee who builds a tool to solve a problem in their own daily work. These roles can, however, be separated. The end users may be colleagues in the same department or in another team. The citizen developer may not use the application much themselves but be responsible for the problem it solves, or may support a product manager or process owner in building it. The roles are therefore described separately, even though one person can hold several of them. When they overlap, the separation of building and approving still applies to the risk tier and the technical approval, which always remain with IT and the relevant specialists.
+
+Four principles guide this distribution. First, business ownership stays with the business: the citizen developer defines what the application should do, and the business owner remains accountable for it. Second, technical and legal judgement stays with specialists. This mirrors the division in spec-driven development, where technical leads own the system specification and developers own the specification of their change \parencite{diaz2026}. Third, building and approving are separated: whoever produces a result does not approve its technical quality or its release \parencite{KEY-kang2026}. The citizen developer may therefore accept a change from a business perspective, but does not set its risk tier or approve it technically. AI agents never hold approval authority, also because their claims that a task is complete are not always reliable \parencite{alhasan2026}. Fourth, every gate has a named decision-maker, and the set of decision-makers grows with the risk tier.
+
+The stages, gates, roles and tiers described here combine ideas from the cited sources, but their specific arrangement is a design choice of this thesis. Whether it works in practice, and whether its effort is acceptable for citizen developers and experts, is evaluated through eADR (Section~TBD).
+
+\paragraph{Screen and Scope Stage}
+
+The first stage decides, with little effort, whether an idea should be pursued through citizen development and under which limits. It produces a short description of the idea, a provisional risk tier and the boundaries for the prototype experiment in stage~2. The citizen developer and the business owner describe the idea. The IT reviewer assesses its technical fit and sets the risk tier. Specialists are involved only when the screening raises legal or data protection questions.
+
+\subparagraph{Problem and business case}
+
+The citizen developer first describes the problem, the intended users and what success would look like, before discussing any solution. MeRGE uses a use-case canvas for this purpose, covering the problem, the value proposition and the risks \parencite{fetzer2026}. IACDM likewise argues that the problem must be understood before technical decisions are made \parencite{KEY-moreira2026}.
+
+The business owner then compares the expected benefit with the expected effort. AI makes development cheaper, so problems that used to be too small for professional development may now be worth solving. It does not, however, make development free. The effort for specification, review, testing and later maintenance remains and is easily underestimated \parencite{KEY-wangliu2026}. In a controlled trial, experienced developers even worked more slowly with AI while believing they were faster \parencite{KEY-moreira2026}. The estimate therefore includes the time of the citizen developer, tool costs, the review effort of IT and specialists, and the operation of the application after release. Expert time, not code generation, is usually the scarcest resource.
+
+\subparagraph{Suitability for citizen development}
+
+Not every application should be built by citizen developers. Research on low-code development shows that IT should co-develop or lead when an application requires complex integrations, must meet enterprise standards or demands technical expertise. Mission-critical or cross-functional processes also need more standardisation than isolated tasks \parencite{KEY-viljoen2025}. Although this research concerns low-code platforms rather than AI-assisted coding, the same reasons apply. They are even stronger here, because citizen developers cannot inspect the generated code \parencite{kobiella2026}. MeRGE shows a related decision: the planned SAP integration of the HR assistant was postponed because it would have raised the criticality of the processed data \parencite{fetzer2026}. Studies with non-programmers point in the same direction. They performed well on small, fully specified tasks \parencite{esnaola2026}, but features that combined several systems required many iterations \parencite{fortesferreira2025}. Table~\ref{tab:stage1-warning-signs} lists the warning signs used in this stage.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption{Warning signs for citizen development (own representation).}
+    \label{tab:stage1-warning-signs}
+    \begin{tabular}{p{9.0cm} p{4.6cm}}
+    \hline
+    \textbf{Warning sign} & \textbf{Typical outcome} \\
+    \hline
+    Integration with or changes to large enterprise systems, such as SAP or Workday & Hand over or co-develop \\
+    Write access to systems of record, such as payroll or employee master data & Restrict scope or hand over \\
+    Changes to legacy code or existing IT-owned applications & Hand over \\
+    Mission-critical or cross-departmental process & Co-develop \\
+    Large scope with many user roles, modules or interacting features & Split or restrict \\
+    Special categories of personal data or decisions about employees & Restrict, hand over or stop \\
+    \hline
+    \end{tabular}
+\end{table}
+
+A warning sign does not always end an idea. Often the scope can be reduced so that the risky part is left out or postponed, as in the MeRGE example.
+
+\subparagraph{Reuse and technical complexity}
+
+Before anything new is built, the citizen developer and IT check whether a similar application, an existing SIXT tool or a standard product already solves the problem. MeRGE includes this as a make-or-buy decision that considers the technologies already available in the organisation \parencite{fetzer2026}. IACDM applies the same idea to individual components: if a mature library exists, it should be used; if not, a small proof of concept comes first \parencite{KEY-moreira2026}. This matters for AI-assisted development, because AI agents tend to produce plausible new code for problems that already have a tested solution \parencite{KEY-moreira2026}.
+
+IT then judges the technical complexity: the required integrations, the data model, the number of user roles and whether the application fits the approved platform and technology stack. IACDM suggests judging complexity from observable signals rather than from estimated code size, with a simple rule: if a project cannot confidently be called simple, it should be treated as complex \parencite{KEY-moreira2026}.
+
+\subparagraph{Data, risk and legal requirements}
+
+The data that the application would process is classified, as in the first phase of MeRGE \parencite{fetzer2026}. Together with the warning signs, this classification determines the provisional risk tier (Section~TBD). The tier is set by IT, not by the citizen developer. If it is uncertain, the higher tier applies \parencite{KEY-kang2026}. Internal policies and legal requirements, such as data protection rules or the involvement of the works council, are identified early, because they can make a use case impossible to realise \parencite{fetzer2026}.
+
+\subparagraph{Capability of the citizen developer}
+
+Citizen developers differ in their technical knowledge, their ability and willingness to learn, and the time they can invest. These differences shape what they can build safely. Users with basic coding knowledge were able to make small changes to generated code themselves, while non-technical users struggled \parencite{kobiella2026}. Non-programmers also often lacked the vocabulary to express their intent \parencite{feldman2024}. Low-code research therefore recommends tailoring governance to the people who build \parencite{KEY-viljoen2025}. The following examples illustrate what difference specific skills can make:
+
+\begin{itemize}
+    \item A citizen developer who can only work through text can describe requirements and judge a prototype. However, they depend on the AI or on IT for every technical step, cannot see what an agent has changed and cannot undo a broken change themselves.
+    \item With basic knowledge of Git, they can track changes, return to a working version after a failed attempt and keep the specification and plan versioned together with the code.
+    \item With experience in an IDE or a terminal-based coding agent, they can run tests, read error messages and work with rule files such as AGENTS.md.
+    \item With an understanding of basic coding concepts, such as functions, data structures or interfaces, they can follow the technical part of the plan, notice obvious mistakes and give agents more precise instructions.
+\end{itemize}
+
+At a minimum, every citizen developer must understand the process of this framework: why specifications are written, what the checkpoints and gates decide and how evidence is used. Without this understanding, the work is likely to drift back into unstructured vibe coding. This thesis therefore proposes a short capability assessment, for example a self-assessment followed by a brief conversation with an IT mentor. The result does not decide who may take part. It decides how much support is needed, such as training, mentoring or co-development with IT, and up to which risk tier the citizen developer can work without close support. The assessment is framed as support planning, not as performance evaluation. The examples and the assessment are design proposals of this thesis.
+
+\subparagraph{Infrastructure}
+
+Citizen development is only safe when the technical and governance infrastructure described in Section~XX is in place. Citizen developers need controlled sandboxes and separate environments. Where a platform lacks such safeguards, organisations must add access controls and review gates \parencite{KEY-viljoen2025}. A practitioner in the same study warned that people with little programming experience and unrestricted access to company data could unintentionally expose sensitive data \parencite{KEY-viljoen2025}. Stage~1 therefore checks whether the infrastructure required for the risk tier is available. If it is not, the idea is restricted to mock-ups with synthetic data or stopped.
+
+\subparagraph{Experiment boundaries and gate G1}
+
+If the idea passes the screening, the business owner and IT agree on the boundaries of the prototype experiment: a time limit, a budget, the approved tools, the data that may be used (normally synthetic or anonymised) and the stop criteria. In line with the exploratory risk level R0, no production credentials are used \parencite{koch2026agentic}. They also agree whether IT will enable, oversee or co-develop, since this affects later staffing and support \parencite{KEY-viljoen2025}.
+
+At G1, the decision-makers check whether:
+
+\begin{itemize}
+    \item the problem, users and success criteria are described;
+    \item no warning sign remains unresolved;
+    \item no existing solution fits better;
+    \item the complexity matches the capability and support of the citizen developer;
+    \item the expected benefit justifies the expected effort;
+    \item the data is classified and a provisional risk tier is set;
+    \item the infrastructure required for this tier is available;
+    \item the experiment boundaries and stop criteria are agreed.
+\end{itemize}
+
+If all criteria are met, the idea moves to stage~2 as an R0 experiment. Otherwise, the gate decides to revise, restrict, hand over or stop. The depth of the screening depends on the risk: for a small R0 idea, a one-page description and a short conversation with IT are sufficient.
 
 \paragraph{Prototype Exploration Stage}
 
