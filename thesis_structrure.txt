@@ -1,0 +1,81 @@
+4 The Governance and Development Framework
+ Intro: a five-layer stack. Layers 1–4 are the enabling environment; Layer 5 is the working practices. The environment sets rules and provides the means, once, for all applications. The working practices apply those rules to one application at a time.
+
+The separation rule (put it in the framework intro)
+
+
+Enabling Environment (Layers 1–4)
+Working Practices (Layer 5)
+Scope
+All citizen-developed applications
+One application
+Time
+Standing; maintained continuously
+Per project, from idea to retirement
+Owned by
+IT and central functions
+Citizen developer, business owner, gate decision-makers
+Type of governance
+Sets rules, provides means
+Applies rules, takes decisions
+Example: risk
+The risk-tier scheme and who assigns tiers
+“This application is R2”, decided at G1
+Example: security
+Security rules and the automated pipeline
+Running the pipeline at Checkpoint B
+Example: people
+The training offer and mentoring
+Capability assessment of this builder in Stage 1
+
+
+4.1 The Enabling Environment. Shared capabilities, maintained centrally and continuously.
+Layer 1: Organisational foundation (decides)
+Decision rights by unit (HR IT, central IT, specialists, business) and planned expert capacity.
+Exception process.
+Ownership and maintenance obligation after release.
+Risk-tier scheme R0–R3: criteria, who assigns, minimum approval per tier.
+Scope rules: what citizen development should not build, and the handover routes (the warning-signs table).
+Data and AI-tool rules, including synthetic data and token budgets.
+Layer 2: Technical foundation (provides)
+Starter kit: approved tools, templates, approved-library list, deployment.
+Isolated environments, including staging.
+Identity and SSO, secrets vault.
+Version-controlled repositories.
+Monitoring, security-intelligence feed, cost tracking.
+Layer 3: Agent harness (steers and checks)
+System specification and context layer (AGENTS.md, skills) as guides.
+Security rules, automated pipeline and protected repository as sensors.
+Layer 4: Capability and support (enables people)
+Training modules, IT mentoring, autonomy that grows with demonstrated skill.
+4.2 Working Practices (Layer 5). How one application moves from idea to operation.
+4.2.1 Core concepts and principles
+Verification over plausibility.
+Compounding error versus compounding correctness.
+The specification as contract.
+Building and approving kept separate.
+4.2.2 Stage-gate foundation
+Why stage-gates; the six stages; the five gate outcomes.
+Risk-based decisions: applying the Layer 1 scheme (set at G1, reviewed at each gate; change-level tiers).
+Roles at each gate.
+4.2.3 The stages
+Screen and scope:
+business case;
+suitability check (applies the Layer 1 scope rules);
+reuse check;
+data and risk classification (applies Layer 1);
+capability assessment (applies Layer 4);
+infrastructure check (Layers 2–3 available?);
+experiment limits; G1.
+Prototype: V-shaped exploration cycle, specification handover, user walkthroughs, test cards; G2.
+Build and verify: the Agile V cycle.
+Left side: system specification from Layer 3 plus the feature specification, Checkpoint A, plan.md.
+Bottom: SCOPE-V and the build agent’s self-checks.
+Right side: independent tests, the Layer 3 pipeline, the review agent, the evidence bundle, Checkpoint B.
+G3.
+Test application: staging and the test kit from Layer 2, test order, pass and fail criteria; G4.
+Pilot: limited users, value and support effort; G5.
+Operate and reassess: reacting to feed alerts from Layer 2, changes through the reduced cycle; G6.
+
+
+

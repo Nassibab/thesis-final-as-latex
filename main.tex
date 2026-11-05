@@ -3,9 +3,6 @@
 
 \documentclass[10pt,a4paper]{article}
 
-% ================================================================
-% PAGE LAYOUT
-% ================================================================
 
 \usepackage{geometry}
 
@@ -18,20 +15,12 @@
 }
 
 
-% ================================================================
-% FONT AND LANGUAGE
-% ================================================================
-
 \usepackage{fontspec}
 \setmainfont{Georgia}
 
 \usepackage[english]{babel}
 \usepackage{csquotes}
 
-
-% ================================================================
-% TEXT FORMATTING
-% ================================================================
 
 \usepackage{setspace}
 \singlespacing
@@ -41,10 +30,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 
-
-% ================================================================
-% HEADINGS
-% ================================================================
 
 \usepackage{titlesec}
 
@@ -76,10 +61,6 @@
 \setcounter{tocdepth}{5}
 
 
-% ================================================================
-% FIGURES AND TABLES
-% ================================================================
-
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -94,10 +75,6 @@
 }
 
 
-% ================================================================
-% REFERENCES
-% ================================================================
-
 \usepackage[
     backend=biber,
     style=apa
@@ -106,31 +83,15 @@
 \addbibresource{references.bib}
 
 
-% ================================================================
-% LINKS
-% ================================================================
-
 \usepackage[hidelinks]{hyperref}
 
-
-% ================================================================
-% CONFIDENTIALITY NOTICE SETTING
-% ================================================================
 
 \newif\ifconfidential
 \confidentialfalse
 
 
-% ================================================================
-% DOCUMENT
-% ================================================================
-
 \begin{document}
 
-
-% ================================================================
-% TITLE PAGE
-% ================================================================
 
 \begin{titlepage}
 
@@ -191,10 +152,6 @@
 \end{titlepage}
 
 
-% ================================================================
-% OPTIONAL CONFIDENTIALITY NOTICE
-% ================================================================
-
 \ifconfidential
 
 \newpage
@@ -218,10 +175,6 @@ prior written consent of the relevant parties.
 
 \fi
 
-
-% ================================================================
-% DECLARATION ON THE USE OF GENERATIVE AI
-% ================================================================
 
 \newpage
 
@@ -251,10 +204,6 @@ applicable requirements of Munich University of Applied Sciences and
 the principles of good scientific practice.
 
 
-% ================================================================
-% DECLARATION OF ORIGINALITY
-% ================================================================
-
 \newpage
 
 \section*{Declaration of Originality}
@@ -283,10 +232,6 @@ Munich, 6 September 2026
 Nassib Aboud
 
 
-% ================================================================
-% ABSTRACT
-% ================================================================
-
 \newpage
 
 \section*{Abstract}
@@ -295,18 +240,10 @@ Nassib Aboud
 \textit{Insert abstract here.}
 
 
-% ================================================================
-% TABLE OF CONTENTS
-% ================================================================
-
 \newpage
 
 \tableofcontents
 
-
-% ================================================================
-% MAIN THESIS
-% ================================================================
 
 \newpage
 
@@ -372,8 +309,6 @@ evaluates the framework with the third application and practitioner
 interviews and answers SQ3 and SQ4 (Section~\ref{sec:evaluation}).
  
 
- 
- 
 \subsection{Scope and Delimitations}
 \label{sec:scope}
 
@@ -417,7 +352,6 @@ reach production. Stopping an idea, restricting its scope or handing it
 over to IT are regarded as legitimate outcomes, since preventing
 unsuitable applications from advancing is itself part of responsible
 governance.
-
 
 
 \section{Research Methodology REVIEWED -  Application Evidence, data analysis and evidence integatin as well as research quality all need to look over again }
@@ -585,7 +519,6 @@ Earlier development experiences and formative discussions informed
 its design. All three applications are in operational use at SIXT.
 
  
- 
 \subsection{Research Objectives and Phases}
 \label{sec:method-phases}
  
@@ -745,7 +678,6 @@ App~1 were reduced in App~3, which difficulties remained and what the
 framework demands from citizen developers and the organisation.
 
  
- 
 \subsection{Application Evidence}
 \label{sec:method-application-evidence}
  
@@ -800,9 +732,6 @@ fact, from the IT review, user feedback, cost data and the team's
 recollection. Records made during development are treated as stronger
 evidence than later recollection, and missing evidence is reported as
 missing.
-
-
-
 
 
 \subsection{Practitioner Interviews}
@@ -918,7 +847,6 @@ the final framework version was fixed on the start of November are reported as f
 work.
  
  
-
 \subsection{Research Quality and Limitations}
 \label{sec:method-limitations}
  
@@ -972,35 +900,6 @@ require other teams to apply the framework, several independent
 reviewers and further organisations.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Problem and framwork requirments}
 Insights from building the first software applications and the faced challegnes. 
 Also based on litautre and interviews with citzen develpers.
@@ -1010,7 +909,6 @@ Reverse engineer what the framework solves
 \subsection{Conceptual Foundations and Key Definitions}
 AI-assisted, agentic, and vibe coding. AI-supported software development today is not one single thing. It runs along a spectrum defined by degrees of AI autonomy, interaction modalities, and human oversight \parencite{farrag2026,mandl2026,sapkota2025}. 
 Grounded in the AI-Augmented Methodology Taxonomy (AAMT) proposed by \textcite{farrag2026}, this spectrum can be categorized into three distinct tiers:
-
 
 
 \begin{enumerate}
@@ -1082,7 +980,7 @@ With GenAI, users can express requirements in natural language and ask coding as
 
 The wider development lifecycle nevertheless remains necessary. Generated changes must still be assessed against requirements, checked for technical quality, integrated with existing systems and prepared for deployment. After deployment, monitoring and user feedback continue to identify defects and new requirements. GenAI can support these activities, including test generation, review, diagnosis and maintenance, but its outputs still require appropriate verification and accountable decisions \parencite{mandl2026}. Faster prototyping consequently does not establish production readiness: \textcite{kobiella2026} find that non-technical users can create useful prototypes while continuing to encounter substantial barriers in deployment and long-term maintenance.
 
-As code generation accelerates, review, verification and integration can become more prominent bottlenecks. In their working paper, \textcite{demirer2026} report cumulative increases of approximately 240\% in commits across successive generations of AI coding tools, compared with approximately 30% in releases. These are different output measures, indicating that increased coding activity translates only partly into shipped software. More directly relevant to differences in experience, \textcite{asdaque2026} find that contributions from less-experienced AI-assisted developers attract more review comments and take longer to resolve than those from more-experienced contributors. Their observational findings suggest that easier code generation can shift additional work onto reviewers; they do not establish that the same effects necessarily occur among non-technical employees in an enterprise setting.
+As code generation accelerates, review, verification and integration can become more prominent bottlenecks. In their working paper, \textcite{demirer2026} report cumulative increases of approximately 240\% in commits across successive generations of AI coding tools, compared with approximately 30\% in releases. These are different output measures, indicating that increased coding activity translates only partly into shipped software. More directly relevant to differences in experience, \textcite{asdaque2026} find that contributions from less-experienced AI-assisted developers attract more review comments and take longer to resolve than those from more-experienced contributors. Their observational findings suggest that easier code generation can shift additional work onto reviewers; they do not establish that the same effects necessarily occur among non-technical employees in an enterprise setting.
 
 A related challenge concerns compounding error and compounding correctness, illustrated in Figure~\ref{fig:compounding-error-correctness}. These terms are used here as a conceptual synthesis rather than as established quantitative laws. Compounding error describes a pattern in which later changes build on unresolved defects or incorrect assumptions, increasing the difficulty of subsequent diagnosis and correction. This interpretation is consistent with the risks identified by \textcite{meske2025}, including unpredictable rewrites, unintended side effects and accumulating technical debt. Compounding correctness describes the intended alternative: preserving verified behaviour while introducing controlled changes. For example, \textcite{wang2026vibecontract} propose explicit task-level contracts that connect requirements, generated code and continuous verification. Such mechanisms can support cumulative quality improvement, but passing checks cannot guarantee correctness or maintainability.
 
@@ -1093,38 +991,497 @@ For this thesis, these findings motivate a framework that combines broader parti
 Beyond supporting individual development tasks, a longer-term ambition is to automate much of the software lifecycle through coordinated AI agents. In this vision of an agentic software factory, agents translate approved requirements into implementations, execute tests, address failures, and support deployment and maintenance within defined constraints. The prospect of connecting these activities into an increasingly autonomous process helps explain the growing interest in agentic software factories \parencite{mandl2026}. However, extensive automation remains an aspiration rather than an established capability across enterprise contexts. Human goal-setting, governance and accountability remain necessary, even where execution becomes largely autonomous \parencite{mandl2026,meske2025}. For this thesis, this vision provides a direction of development; the framework must establish which activities can already be delegated reliably and where expert intervention remains required.
 
 
-
 \subsection{Capabilities and Limitations of Non-Technical Developers}
-% Explain what existing research says people can build,
-% understand, and evaluate with AI assistance.
 
 \subsection{Expert Support in Citizen-Led Software Development}
-% Explain where professional expertise remains necessary.
 
 \subsection{Governance, Guardrails, and Development Support}
-% Review roles, decision gates, technical controls,
-% and approaches that support responsible development.
 
 \subsection{Conceptualisation of Production Readiness}
-% Define production readiness using the literature:
-% functionality, reliability, security, compliance,
-% maintainability, business value, and accountability.
 
 \subsection{Synthesis of the Literature and Research Gap}
-% Connect the findings, identify what remains unanswered,
-% and explain how this sharpens your research questions.
 
 \section{The Governance and Development Framework}
 \label{sec:framework}
 
+This chapter presents the framework developed in this thesis. Following
+\textcite{sein2011adr}, it is an ensemble artifact: it combines technical
+elements, such as approved tools, environments and automated checks, with
+organisational elements, such as roles, rules and training. To make this
+combination easier to understand and to implement, the framework is
+structured into five layers (Table~\ref{tab:framework-layers}).
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{The five layers of the framework (own representation).}
+    \label{tab:framework-layers}
+    \begin{tabular}{@{}p{3.0cm} p{1.9cm} p{5.6cm} p{3.4cm}@{}}
+    \toprule
+    \textbf{Layer} & \textbf{Function} & \textbf{Main elements} &
+        \textbf{Owner} \\
+    \midrule
+    1 Organisational foundation & Decides & Decision rights and expert
+        capacity, exception process, ownership after release, risk-tier
+        scheme, scope rules, data and AI-tool rules & IT management,
+        central functions and specialists \\
+    \addlinespace
+    2 Technical foundation & Provides & Starter kit, isolated
+        environments, identity and secrets, version-controlled
+        repositories, monitoring & Central IT and HR IT \\
+    \addlinespace
+    3 Agent harness & Steers and checks & Guides (system specification,
+        context files) and sensors (security rules, automated pipeline,
+        protected repository) & Software engineers in IT \\
+    \addlinespace
+    4 Capability and support & Enables & Training, IT mentoring,
+        autonomy that grows with demonstrated skill & IT mentors and
+        training providers \\
+    \addlinespace
+    5 Working practices & Applies & Stage-gate process with Agile~V and
+        SCOPE-V cycles, applied to one application & Citizen developer,
+        business owner, gate decision-makers \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+
+Layers~1 to~4 form the \emph{enabling environment}. They set the rules
+and provide the means once, for all citizen-developed applications, and
+IT and central functions maintain them continuously. Layer~5 contains
+the \emph{working practices}. They apply these rules to one application
+at a time, from the first idea to its retirement.
+Table~\ref{tab:environment-vs-practices} summarises this separation.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Separation between the enabling environment and the working
+    practices (own representation).}
+    \label{tab:environment-vs-practices}
+    \begin{tabular}{@{}p{2.8cm} p{5.4cm} p{5.4cm}@{}}
+    \toprule
+    & \textbf{Enabling environment (Layers 1--4)} &
+        \textbf{Working practices (Layer 5)} \\
+    \midrule
+    Scope & All citizen-developed applications & One application \\
+    \addlinespace
+    Time & Standing; maintained continuously & Per project, from idea
+        to retirement \\
+    \addlinespace
+    Owned by & IT and central functions & Citizen developer, business
+        owner, gate decision-makers \\
+    \addlinespace
+    Type of governance & Sets rules, provides means & Applies rules,
+        takes decisions \\
+    \addlinespace
+    Example: risk & The risk-tier scheme and who assigns tiers &
+        \enquote{This application is R2}, decided at G1 \\
+    \addlinespace
+    Example: security & Security rules and the automated pipeline &
+        Running the pipeline at Checkpoint~B \\
+    \addlinespace
+    Example: people & The training offer and mentoring & Capability
+        assessment of this builder in Stage~1 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+An enabling environment is needed because faster code generation does
+not by itself lead to faster delivery of usable software. Gains in one
+activity are limited by complementary activities, such as review,
+testing and integration \parencite{demirer2026}, and AI tends to amplify
+the existing strengths and weaknesses of an organisation
+\parencite{dora2025}. Without shared rules, checks and version control,
+early errors can build on each other; a stable environment instead
+allows verified results to accumulate
+(Section~\ref{sec:compounding-error-correctness}).
+
+The five layers are a design decision of this thesis. No single source
+proposes them, and the assignment of each element to a layer is also a
+design choice. The layering serves three purposes. First, it makes the
+framework easier to understand, because each layer answers one
+question: who decides, what is provided, how agents are steered and
+checked, how people are enabled, and how one application moves forward.
+Second, it allows an organisation to implement the framework step by
+step, starting with the lower layers. Third, it separates
+responsibilities. Each element belongs to exactly one layer, and the
+layers are intended not to overlap and, together, to cover the
+conditions identified in this thesis. Because each layer requires
+different knowledge and skills, from governance and law to platform
+operation, agent configuration and teaching, each layer can have an
+identifiable owner (Table~\ref{tab:framework-layers}). One person or
+unit may nevertheless own several layers.
+
+Higher layers build on lower ones. A missing layer does not necessarily
+block the layers above it, but it can undermine them, because decisions
+in a lower layer limit what is responsible in a higher one. Isolated
+environments (Layer~2) illustrate this. Coding agents can run commands,
+edit files and access connected systems with little supervision
+\parencite{galster2026}, and they sometimes violate constraints or
+change their environment in unintended ways
+\parencite{alhasan2026,uddin2026}. In a sandbox with synthetic data,
+such errors remain contained. Without one, giving agents this freedom
+(Layer~3) would be irresponsible, because an agent acting outside its
+task could publish or delete employee data. A practitioner in
+\textcite{viljoen2024} raised a similar concern about people with little
+programming experience who have unrestricted access to company data.
+Whether real data may enter such an environment at all is in turn
+decided by the data rules in Layer~1.
+
+The dependency describes a logical order, not a strict sequence. Some
+layers can be built in parallel; training (Layer~4), for example, can
+start before the harness (Layer~3) is complete. An incomplete
+environment also does not mean that citizen development must stop. It
+limits what may be built: an organisation can start with low-risk
+applications and widen the scope as further layers become available.
+The infrastructure check in Stage~1 applies this rule to each
+application (Section~\ref{sec:working-practices}).
+
+Section~\ref{sec:enabling-environment} describes Layers~1 to~4, and
+Section~\ref{sec:working-practices} describes the working practices.
+Which elements already existed at SIXT, which are proposed by this
+thesis, and how they were used in the three applications is reported in
+Section~\ref{sec:evaluation}.
+
 \subsection{The Enabling Environment}
+\label{sec:enabling-environment}
 
-\subsubsection{Technology Platform}
-% Describe the tools, environments, and technical infrastructure
-% provided to citizen developers.
+\subsubsection{Layer 1: Organisational Foundation}
+\label{sec:layer1}
 
+\paragraph{Decision Rights and Expert Capacity}
+\label{sec:decision-rights}
 
-\paragraph{Security rules and checks}
+\paragraph{Exception Process}
+\label{sec:exception-process}
+
+\paragraph{Ownership and Maintenance after Release}
+\label{sec:ownership}
+
+\paragraph{Risk-Tier Scheme}
+\label{sec:risk-tiers}
+
+The risk-tier scheme defines how much control an application and each of
+its changes need. It is set once for all citizen-developed applications.
+Applying it to one application, for example deciding at G1 that an
+application is R2, is part of the working practices
+(Section~\ref{sec:working-practices}). Matching control to risk allows
+low-risk applications to pass with little effort and focuses scarce
+expert time where it is needed, because human oversight is costly when it
+is applied to every case in the same way \parencite{kang2026}.
+
+\subparagraph{What Risk Means}
+
+In this framework, risk is the potential harm that an application built
+with GenAI may cause if it fails, works incorrectly or is misused. Such
+harm includes exposed or wrong data, a disrupted business process and the
+breach of internal rules or legal requirements. Risks that arise from AI
+functions inside the application, such as a chatbot giving wrong answers,
+are outside this scheme (Section~\ref{sec:scope}). An application with
+such functions is additionally referred to the organisation's governance
+for AI systems, for example a method such as MeRGE \parencite{fetzer2026}.
+
+\subparagraph{Risk Tiers and Risk Classes}
+
+The scheme works on two levels. Both use the labels R0 to R3, which
+follow the four levels of Agentic Agile-V \parencite{koch2026agentic},
+but each level has its own criteria:
+
+\begin{itemize}
+    \item The \emph{risk tier} of an application describes the impact of
+    the application as a whole. It decides how much support IT provides,
+    who decides at the gates, which evidence is required and which
+    infrastructure and skills must be available.
+    \item The \emph{risk class} of a change describes the type of a single
+    change, such as a text correction or a new function. It decides how
+    closely the change is reviewed at Checkpoint~B.
+\end{itemize}
+
+Two levels are needed because the impact of an application and the type
+of a change do not always match. A text correction in a high-impact
+application needs little review, whereas a change to the access rules of
+a moderate-impact application needs close review. A change can therefore
+receive a higher or a lower class than the tier of its application. A
+higher class makes the review of that change stricter, but it does not
+change the tier of the application, unless the change also changes the
+impact of the application, for example by adding write access to another
+system. In that case, the tier is reassessed. This separation into two
+levels is a design decision of this thesis.
+
+At the application level, R0 (\emph{exploratory}) describes a status
+rather than an impact. It covers prototypes and demonstrations that use
+only synthetic or anonymised data and have no real users. At G1, the IT
+reviewer therefore sets a provisional \emph{target tier} from R1 to R3,
+which is the tier the application would have in real use. Until G2, all
+work runs under R0 conditions, whatever the target tier. The three
+target tiers are R1 (\emph{low impact}), R2 (\emph{moderate impact}) and
+R3 (\emph{high impact}).
+
+\subparagraph{Tier Factors}
+
+The tier of an application is judged by seven factors
+(Table~\ref{tab:tier-factors}). Four of them follow \textcite{kang2026},
+who classify AI-generated code by data sensitivity, regulatory impact,
+proximity to customers and reversibility. For internal applications,
+proximity to customers is adapted here as the reach of the users.
+Security-sensitive functions, such as login and access rights, are added
+because they raise the risk of a change \parencite{koch2026agentic}. The
+connection to other systems and the dependence of business processes are
+added because research on low-code development recommends that IT
+co-develops or leads when an application needs complex integrations or
+supports mission-critical or cross-functional processes
+\parencite{viljoen2024}. The selection of the factors and their levels
+is a design decision of this thesis.
+
+Data sensitivity is judged with the data classification that the
+organisation already uses, for example \emph{public}, \emph{internal},
+\emph{confidential} and \emph{strictly confidential}. Defining such a
+classification is beyond the scope of this thesis. For readability,
+Table~\ref{tab:tier-factors} uses three simplified levels: no personal
+data, ordinary personal data and sensitive personal data.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Factors that determine the risk tier of an application
+    (own representation, factors partly based on \textcite{kang2026}).}
+    \label{tab:tier-factors}
+    \begin{tabular}{@{}p{2.8cm} p{3.6cm} p{3.6cm} p{3.6cm}@{}}
+    \toprule
+    \textbf{Factor} & \textbf{R1 low impact} & \textbf{R2 moderate
+        impact} & \textbf{R3 high impact} \\
+    \midrule
+    Data sensitivity & No personal data & Ordinary personal data of
+        employees, such as names, roles and teams & Sensitive personal
+        data, such as salary, health or performance ratings \\
+    \addlinespace
+    Rules and regulation & Only general internal policies & Data
+        protection rules for personal data apply & An assessment by
+        specialists is needed \\
+    \addlinespace
+    Reach of users & The builder and their own team & One department or
+        a defined group of internal users & Several departments, the
+        whole company or external persons, such as applicants \\
+    \addlinespace
+    Connection to other systems & Stands alone with its own data & Reads
+        data from systems of record through approved interfaces & Writes
+        data to systems of record, such as payroll or employee master
+        data \\
+    \addlinespace
+    Effect of errors & Minor inconvenience, easy to correct & Noticeable
+        errors in a work task, correctable with some effort & Errors
+        affect pay, contracts or decisions about employees, or are hard
+        to undo \\
+    \addlinespace
+    Process dependency & A convenience; work continues without it & A
+        team process relies on it; a manual fallback exists & A critical
+        or cross-departmental process relies on it without a fallback \\
+    \addlinespace
+    Security-sensitive functions & Only the standard company login &
+        Role-based access within the application & Manages access rights
+        or logins beyond the application \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Three examples show the difference. A tool that lists upcoming internal
+training dates for the builder's own team is R1: it contains no personal
+data and nothing depends on it. A tool that shows managers of one
+department the names, roles and teams of their employees, read from the
+HR system, is R2. A tool that calculates bonus payments and writes them
+into the payroll system is R3, because errors affect pay and the tool
+changes a system of record.
+
+\subparagraph{Combining the Factors}
+
+The highest-rated factor determines the tier of the whole application.
+The ratings are not averaged. The same rule, called the \enquote{high
+water mark}, is used in established security standards: a system
+receives the highest impact level found among its types of information
+and its security objectives \parencite{nist2004fips199,nist2006fips200}.
+
+A simple example illustrates the rule. A tool for planning team events
+is used by one team, nothing depends on it and mistakes are easy to fix.
+On these factors, it is R1. To organise shared transport, however, it
+imports the home addresses of employees from the HR system. Because of
+this one function, it processes personal data and reads from a system of
+record, so the whole tool becomes R2. A parcel works the same way: if it
+contains one fragile item, the whole parcel is handled as fragile. An
+average would hide exactly the factor that matters. If the tool did not
+need the addresses, leaving them out would keep it at R1; restricting
+the scope in this way is often a better choice than accepting a higher
+tier. If a factor cannot be judged with confidence, the higher level is
+assumed \parencite{kang2026}.
+
+\subparagraph{What Each Tier Requires}
+
+Table~\ref{tab:tier-consequences} shows what each tier requires. The
+support models follow the distinction between IT enabling, overseeing or
+co-developing citizen development \parencite{viljoen2024}. The required
+infrastructure is described in Layer~2 (Section~\ref{sec:layer2}) and
+the required skills in Layer~4 (Section~\ref{sec:layer4}). The detailed
+responsibilities for testing the whole application are part of the
+working practices (Table~\ref{tab:g4-responsibility}).
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Default requirements for each risk tier (own
+    representation).}
+    \label{tab:tier-consequences}
+    \begin{tabular}{@{}p{2.3cm} p{2.8cm} p{2.8cm} p{2.8cm} p{2.9cm}@{}}
+    \toprule
+    & \textbf{R0 exploratory} & \textbf{R1 low impact} & \textbf{R2
+        moderate impact} & \textbf{R3 high impact} \\
+    \midrule
+    Support by IT & Enable & Enable & Oversee & Co-develop or hand
+        over \\
+    \addlinespace
+    Decision-makers at gates & Business owner and IT reviewer at G1 &
+        Business owner and IT reviewer & As R1, plus specialists if
+        triggered & Explicit sign-off by business owner, IT and
+        specialists \\
+    \addlinespace
+    Minimum evidence & Prototype specification and walkthrough record &
+        Standard IT test kit and automated scans, reviewed by IT &
+        Independent tests for every change, technical approval, full
+        application tests & As R2, plus penetration test and specialist
+        assessments \\
+    \addlinespace
+    Environment and data & Isolated sandbox; synthetic or anonymised
+        data; no production access & Standard environments from the
+        starter kit; real data only within the approved class & As R1,
+        plus monitoring, alerts and tested rollback & Environments
+        managed by IT \\
+    \addlinespace
+    Skills of the builder & Course on the framework process & As R0,
+        plus basics of Git and the coding agent & As R1, plus capability
+        assessment and an IT mentor & Works in a team led by IT \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+The table shows a default, not a fixed standard. Organisations can make
+it stricter or looser, depending on their expert capacity, their
+infrastructure and how much risk they are willing to accept. A
+risk-averse organisation may, for example, treat all personal data as
+R3. An organisation with a mature platform and experienced citizen
+developers may handle small R2 applications with the lighter support of
+R1. If the infrastructure or skills required for a tier are not
+available, the application is restricted to a lower tier or handed over.
+
+\subparagraph{Risk Classes of Changes}
+
+The risk class of a change follows the four levels of Agentic Agile-V
+\parencite{koch2026agentic} (Table~\ref{tab:change-classes}). For
+citizen-developed applications, this thesis counts the following as R3
+changes: changes to the login, the role logic or access rights, and new
+exports of personal data. This list is a design decision.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Risk classes of changes (based on
+    \textcite{koch2026agentic}).}
+    \label{tab:change-classes}
+    \begin{tabular}{@{}p{3.2cm} p{6.2cm} p{4.2cm}@{}}
+    \toprule
+    \textbf{Risk class} & \textbf{Typical changes} &
+        \textbf{Approval requirement} \\
+    \midrule
+    R0 exploratory & Throwaway prototypes and internal demos & Review
+        optional \\
+    \addlinespace
+    R1 routine & Documentation and small code clean-ups & Normal code
+        review \\
+    \addlinespace
+    R2 production & New features and bug fixes & Mandatory reviewer
+        approval \\
+    \addlinespace
+    R3 high assurance & Security-related functions & Explicit sign-off
+        and release gate \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+The class of a change is set by these predefined rules at Checkpoint~A,
+not by the judgement of the citizen developer alone; IT decides unclear
+cases.
+
+\subparagraph{Ownership, Assignment and Reassessment}
+
+The scheme is owned by IT management together with information security
+and data protection. They define the factors, levels and requirements,
+and they revise them when experience shows that a tier is too strict or
+too loose.
+
+The tier of an application is assigned by the IT reviewer, not by the
+citizen developer. This keeps building and approving separate
+\parencite{kang2026}. To keep the effort low, the citizen developer
+answers a short questionnaire with one question per factor, and the IT
+reviewer sets the tier from these answers. The questionnaire is a design
+proposal of this thesis.
+
+A tier is not permanent. The following events trigger a reassessment:
+
+\begin{itemize}
+    \item a new type of data, especially personal data;
+    \item a new connection to another system, or write access to it;
+    \item a new user group or a wider rollout;
+    \item new roles or broader access rights;
+    \item a serious incident or repeated errors in operation;
+    \item a change in the business purpose of the application.
+\end{itemize}
+
+During development, the tier is reassessed at the next gate. During
+operation, the operations owner reports the trigger and the tier is
+reassessed at once. A tier can also be lowered, for example when the
+scope is restricted. The list of triggers is a design decision of this
+thesis.
+
+\subparagraph{Limits of the Scheme}
+
+The factors, their levels and the requirements for each tier are design
+proposals of this thesis and have not been validated. The sources they
+build on were not developed for citizen development: the levels of
+Agentic Agile-V address AI-assisted development by professional teams
+\parencite{koch2026agentic}, and the high water mark comes from security
+standards for information systems
+\parencite{nist2004fips199,nist2006fips200}. Concrete thresholds, such
+as what counts as a defined group of users, depend on the organisation.
+How the scheme was applied to the three applications at SIXT is reported
+in Section~\ref{sec:evaluation}.
+
+\paragraph{Scope Rules and Handover Routes}
+\label{sec:scope-rules}
+
+\paragraph{Data and AI-Tool Rules}
+\label{sec:data-tool-rules}
+
+\subsubsection{Layer 2: Technical Foundation}
+\label{sec:layer2}
+
+\paragraph{Starter Kit}
+\label{sec:starter-kit}
+
+\paragraph{Isolated Environments}
+\label{sec:environments}
+
+\paragraph{Identity, Single Sign-On and Secrets}
+
+\paragraph{Version-Controlled Repositories}
+
+\paragraph{Monitoring, Security Intelligence and Cost Tracking}
+\label{sec:monitoring}
+
+\subsubsection{Layer 3: Agent Harness}
+\label{sec:layer3}
+
+\paragraph{Guides: System Specification and Context Layer}
+\label{sec:guides}
+
+\paragraph{Sensors: Security Rules, Pipeline and Protected Repository}
 \label{sec:security-rules}
  
 IT defines the security rules for all citizen-developed applications once,
@@ -1187,24 +1544,46 @@ complete policy.
 The rules are versioned with the system specification and changed only by
 IT. When a security check or a reviewer finds the same problem repeatedly,
 IT turns it into a new rule, as described for the Evolve step of SCOPE-V.
-% TODO (own data): state which of these rules and checks already existed
-% at SIXT HR and which are proposed by this thesis (methodology requires
-% this distinction; see Section~\ref{sec:method-context}).
- 
 
+\subsubsection{Layer 4: Capability and Support}
+\label{sec:layer4}
 
-\subsubsection{Governance Structure}
-% Describe roles, responsibilities, decision rights,
-% and accountability within the framework.
+\paragraph{Training Modules}
+
+\paragraph{IT Mentoring}
+
+\paragraph{Graduated Autonomy}
 
 \subsection{Working Practices}
+\label{sec:working-practices}
 
 \subsubsection{Core Concepts and Principles}
-% Introduce the concepts the working practices build on.
 
-\subsubsection{The Stage-Gate Process Foundation REVIEWED}
-% Introduce the overall stage-gate logic, gate outcomes,
-% risk tiers, and roles before the individual stages.
+\paragraph{Verification over Plausibility}
+
+\paragraph{Compounding Error versus Compounding Correctness}
+\label{sec:compounding-error-correctness}
+Later corrections are especially hard for citizen developers after a production build has begun.
+This difficulty can be explained through two possible development patterns: compounding error and compounding correctness. These terms, which are common in the practice of AI-assisted development \parencite{strongdm2026SoftwareFactory}, are used here as a synthesis of sources rather than as established or quantitatively validated laws (see Figure~\ref{fig:compounding-error-correctness}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/fig-compounding-error-correctness.jpg}
+    \caption{Conceptual illustration of compounding correctness and compounding error in AI-assisted development (own illustration).}
+    \label{fig:compounding-error-correctness}
+\end{figure}
+
+Without structural guardrails, unstructured vibe coding can create a negative feedback loop. Initial defects, unstated assumptions and hallucinated logic may be carried forward and build on each other across multi-turn interactions, making subsequent changes harder. \textcite{sarkar2025} describe “context momentum”: earlier prompts and generated outputs influence later development and can make it difficult to move away from initial implementation choices. In their example, the model interpreted a request for historical exchange rates as a single date. When the developer later explicitly requested a date range, the newly generated code still fetched only one date. If such choices are made directly in the production build, they may become fixed before the requirements are fully understood. A related concern is epistemological debt, which \textcite{ginac2026} defines as the gap between a system’s behaviour and its maintainers’ understanding of it. This conceptual framework suggests that accepting generated changes without maintaining that understanding can weaken the ability to diagnose and correct failures. It does not establish that errors inevitably multiply with every interaction. Prototyping can partly address both concerns: implementation choices are explored before the production build, and citizen developers can understand the intended behaviour before production code is generated.
+
+ When vibe coding is bounded by a technical harness, explicit specifications and verification against ground truth, later iterations can build on validated results. Correctness and quality may then accumulate over time. A technical harness is a configured environment of tools, constraints and automated checks. A validated prototype allows production development to start from a reviewed basis. When the specification derived from the prototype is reviewed, changes are checked against explicit expected behaviour, and validated corrections are retained in tests and rules, later iterations can build on earlier improvements. In an industry experience report, \textcite{lopopolo2026HarnessEngineering} describes using enforceable architectural constraints, repository documentation and automated feedback to guide coding agents. Similarly, \textcite{wang2026vibecontract} proposes developer-validated contracts that connect intended behaviour with code generation, testing and verification. VibeContract is a vision paper supported by an illustrative example, rather than broad empirical validation. In the proposed framework, the validated prototype is the source of this intended behaviour. Together, these sources motivate the possibility of cumulative quality improvements. They do not guarantee that every iteration increases correctness.
+
+\paragraph{The Specification as Contract}
+
+\paragraph{Separation of Building and Approving}
+
+\subsubsection{Stage-Gate Foundation}
+
+\paragraph{Rationale for a Stage-Gate Process}
 
 AI-assisted development changes where the cost of software lies. Generating code has become fast and cheap (see paragraph software dev before and after GenAI TBD). Specifying, verifying, integrating and taking responsibility for that code has not, and these activities now make up a larger share of the total cost of a change \parencite{wangliu2026}. When more code is produced than can be checked, teams build up \emph{verification debt}: weak tests, hidden regressions and a growing review burden. The time needed for review and clean-up can cancel out the speed gained through AI \parencite{koch2026agentic}.
 
@@ -1220,7 +1599,7 @@ The logic of deciding early before investing more is also found in MeRGE, the Me
 
 MeRGE is nevertheless used in this thesis because its organisational logic does not depend on this difference. Deciding early whether a use case is worth pursuing, linking business value with data sensitivity and risk, involving experts at defined points and introducing software through a controlled pilot apply to any internally developed software. MeRGE is also close to the setting of this thesis: it was developed with action design research in a large German company and includes an HR use case. This thesis therefore adopts MeRGE selectively. Its Precheck and Conceptualization phases inform the early screening at G1 and G2, and its Quality and Deployment phases inform the readiness checks, approvals and pilot at G4 and G5. Its GenAI-specific measures, such as protection against harmful outputs, are not adopted. The transition from prototype to production, the controls for AI-assisted coding and the operation stage are added by this thesis.
 
-\paragraph{Overall structure}
+\paragraph{Overall Structure}
 
 The framework moves an application through six stages, each followed by a gate (Table~\ref{tab:stage-gate-overview}).
 
@@ -1247,7 +1626,7 @@ Stages~2 and~3 are described in detail in Sections~TBD. The other stages build o
 
 The stage-gate process serves as the macro framework of this thesis. It steers the application as a whole and decides at each gate whether it may advance. Within individual stages, it adopts smaller frameworks that guide the detailed work. In stage~2, a lightweight V-shaped cycle adapted from Agile~V guides how the prototype is specified, built and evaluated \parencite{koch2026agile}. In stage~3, a fuller Agile-V cycle guides how each change is specified, built and accepted, and within each change the SCOPE-V cycle guides how an agent completes a single task \parencite{koch2026agile,koch2026agentic}. These smaller frameworks decide only about their own level of work. Accepting a change therefore never authorises a release; only the gates of the macro framework do.
 
-\paragraph{Gate decisions}
+\paragraph{Gate Decisions}
 
 Every gate uses the same five outcomes:
 
@@ -1259,13 +1638,18 @@ Every gate uses the same five outcomes:
     \item \textbf{Stop:} the work ends, and what was learned is recorded.
 \end{itemize}
 
-Decisions are based on evidence, not on impressions. This follows the acceptance rule of Agentic Agile-V: AI-generated output is accepted not because it looks plausible but because it provides the evidence required for its risk level \parencite{koch2026agentic}. Each stage therefore has \emph{entry criteria}, which the previous gate must have confirmed, and \emph{exit criteria}, which the next gate checks. Stop criteria, such as an exceeded budget, are defined at the start. Although the stages are shown in sequence, work may return to an earlier stage when new findings require it, as MeRGE also recommends \parencite{fetzer2026}.
+Decisions are based on evidence, not on impressions. This follows the acceptance rule of Agentic Agile-V: AI-generated output is accepted not because it looks plausible but because it provides the evidence required for its risk class \parencite{koch2026agentic}. Each stage therefore has \emph{entry criteria}, which the previous gate must have confirmed, and \emph{exit criteria}, which the next gate checks. Stop criteria, such as an exceeded budget, are defined at the start. Although the stages are shown in sequence, work may return to an earlier stage when new findings require it, as MeRGE also recommends \parencite{fetzer2026}.
 
-\paragraph{Risk-based decisions}
+\paragraph{Risk-Based Decisions}
 
-How strict a gate is depends on risk. The framework assigns each application a risk tier from R0 (exploratory) to R3 (high assurance), based on the levels proposed in Agentic Agile-V \parencite{koch2026agentic}. The tier is set at G1, confirmed at G2 and reviewed at later gates. It decides who must approve and how much evidence is required. If the tier is uncertain, the higher tier applies, following the fail-safe principle of \textcite{kang2026}. Applications in the highest tier are not developed by citizen developers alone but handed over to IT or developed jointly. Individual changes in stage~3 receive their own tier, which may be lower than the tier of the application but never higher. The tiers and their criteria are explained in Section~TBD.
+How strict a gate is depends on risk. Each application receives a risk
+tier and each change a risk class, as defined in the risk-tier scheme
+(Section~\ref{sec:risk-tiers}). The IT reviewer sets a provisional target
+tier at G1, confirms it at G2 and reviews it at later gates. Until G2,
+all work runs under R0 conditions. The tier decides who must approve and
+how much evidence is required.
 
-\paragraph{Roles and responsibilities}
+\paragraph{Roles and Responsibilities}
 
 The framework distinguishes seven roles (Table~\ref{tab:stage-gate-roles}). In the setting of this thesis, the end user, the citizen developer and the business owner are often the same person: an HR employee who builds a tool to solve a problem in their own daily work. These roles can, however, be separated. The end users may be colleagues in the same department or in another team. The citizen developer may not use the application much themselves but be responsible for the problem it solves, or may support a product manager or process owner in building it. The roles are therefore described separately, even though one person can hold several of them. When they overlap, the separation of building and approving still applies to the risk tier and the technical approval, which always remain with IT and the relevant specialists.
 
@@ -1289,25 +1673,23 @@ The framework distinguishes seven roles (Table~\ref{tab:stage-gate-roles}). In t
     \end{tabular}
 \end{table}
 
-Four principles guide this distribution. First, business ownership stays with the business: the citizen developer defines what the application should do, and the business owner remains accountable for it. Second, technical and legal judgement stays with specialists. This mirrors the division in spec-driven development, where technical leads own the system specification and developers own the specification of their change \parencite{diaz2026}. Third, building and approving are separated: whoever produces a result does not approve its technical quality or its release \parencite{kang2026}. The citizen developer may therefore accept a change from a business perspective, but does not set its risk tier or approve it technically. AI agents never hold approval authority, also because their claims that a task is complete are not always reliable \parencite{alhasan2026}. Fourth, every gate has a named decision-maker, and the set of decision-makers grows with the risk tier.
+Four principles guide this distribution. First, business ownership stays with the business: the citizen developer defines what the application should do, and the business owner remains accountable for it. Second, technical and legal judgement stays with specialists. This mirrors the division in spec-driven development, where technical leads own the system specification and developers own the specification of their change \parencite{diaz2026}. Third, building and approving are separated: whoever produces a result does not approve its technical quality or its release \parencite{kang2026}. The citizen developer may therefore accept a change from a business perspective, but does not set its risk class or approve it technically. AI agents never hold approval authority, also because their claims that a task is complete are not always reliable \parencite{alhasan2026}. Fourth, every gate has a named decision-maker, and the set of decision-makers grows with the risk tier.
 
 The stages, gates, roles and tiers described here combine ideas from the cited sources, but their specific arrangement is a design choice of this thesis. Whether it works in practice, and whether its effort is acceptable for citizen developers and experts, is evaluated through ADR (Section~TBD).
 
-\subsubsection{The Stages of the Stage-Gate Process REVIEWED}
-% Describe each stage, the work within it,
-% and the criteria for passing its gate.
+\subsubsection{The Stages}
 
-\paragraph{Screen and scope}
+\paragraph{Stage 1: Screen and Scope}
 
 The first stage decides, with little effort, whether an idea should be pursued through citizen development and under which limits. It produces a short description of the idea, a provisional risk tier and the boundaries for the prototype experiment in stage~2. The citizen developer and the business owner describe the idea. The IT reviewer assesses its technical fit and sets the risk tier. Specialists are involved only when the screening raises legal or data protection questions.
 
-\subparagraph{Problem and business case}
+\subparagraph{Problem and Business Case}
 
 The citizen developer first describes the problem, the intended users and what success would look like, before discussing any solution. MeRGE uses a use-case canvas for this purpose, covering the problem, the value proposition and the risks \parencite{fetzer2026}. IACDM likewise argues that the problem must be understood before technical decisions are made \parencite{moreira2026}.
 
 The business owner then compares the expected benefit with the expected effort. AI makes development cheaper, so problems that used to be too small for professional development may now be worth solving. It does not, however, make development free. The effort for specification, review, testing and later maintenance remains and is easily underestimated \parencite{wangliu2026}. In a controlled trial, experienced developers even worked more slowly with AI while believing they were faster \parencite{moreira2026}. The estimate therefore includes the time of the citizen developer, tool costs, the review effort of IT and specialists, and the operation of the application after release. Expert time, not code generation, is usually the scarcest resource.
 
-\subparagraph{Suitability for citizen development}
+\subparagraph{Suitability for Citizen Development}
 
 Not every application should be built by citizen developers. Research on low-code development shows that IT should co-develop or lead when an application requires complex integrations, must meet enterprise standards or demands technical expertise.Mission-critical or cross-functional processes also need more standardisation than isolated tasks \parencite{viljoen2024}. Although this research concerns low-code platforms rather than AI-assisted coding, the same reasons apply. They are even stronger here, because citizen developers cannot inspect the generated code \parencite{kobiella2026}. MeRGE shows a related decision: the planned SAP integration of the HR assistant was postponed because it would have raised the criticality of the processed data \parencite{fetzer2026}. Studies with non-programmers point in the same direction. They performed well on small, fully specified tasks \parencite{esnaola2026}, but features that combined several systems required many iterations \parencite{fortesferreira2025}. Table~\ref{tab:stage1-warning-signs} lists the warning signs used in this stage.
 
@@ -1332,17 +1714,23 @@ Not every application should be built by citizen developers. Research on low-cod
 
 A warning sign does not always end an idea. Often the scope can be reduced so that the risky part is left out or postponed, as in the MeRGE example.
 
-\subparagraph{Reuse and technical complexity}
+\subparagraph{Reuse and Technical Complexity}
 
 Before anything new is built, the citizen developer and IT check whether a similar application, an existing  tool or a standard product or open source software already solves the problem. MeRGE includes this as a make-or-buy decision that considers the technologies already available in the organisation \parencite{fetzer2026}. IACDM applies the same idea to individual components: if a mature library exists, it should be used; if not, a small proof of concept comes first \parencite{moreira2026}. This matters for AI-assisted development, because AI agents tend to produce plausible new code for problems that already have a tested solution \parencite{moreira2026}.
 
 IT then judges the technical complexity: the required integrations, the data model, the number of user roles and whether the application fits the approved platform and technology stack. IACDM suggests judging complexity from observable signals rather than from estimated code size, with a simple rule: if a project cannot confidently be called simple, it should be treated as complex \parencite{moreira2026}.
 
-\subparagraph{Data, risk and legal requirements}
+\subparagraph{Data, Risk and Legal Requirements}
 
-The data that the application would process is classified first, as in the first phase of MeRGE \parencite{fetzer2026}. Data is, however, only one factor in the provisional risk tier (Section~TBD). Following \textcite{kang2026}, who classify AI-generated code by data sensitivity, regulatory impact, proximity to customers and reversibility, the tier also considers who uses the application, whether it only reads from other systems or also writes to them, how serious and how reversible errors would be, and how much a business process depends on it. An error in a personal to-do tool is minor, while an error that affects pay, contracts or decisions about employees is not. Security-sensitive functions, such as authentication or access rights, also raise the tier \parencite{koch2026agentic}, as do the warning signs described above. The highest factor determines the tier. The tier is set by IT, not by the citizen developer, and if it is uncertain, the higher tier applies \parencite{kang2026}. Internal policies and legal requirements, such as data protection rules or the involvement of the works council, are identified early, because they can make a use case impossible to realise \parencite{fetzer2026}. The selection of these factors is a design choice of this thesis and is refined through ADR.
+The data that the application would process are classified first, as in
+the first phase of MeRGE \parencite{fetzer2026}. Based on this and the
+other factors of the risk-tier scheme, the IT reviewer sets a provisional
+target tier (Section~\ref{sec:risk-tiers}). Internal policies and legal
+requirements, such as data protection rules or the involvement of the
+works council, are identified early, because they can make a use case
+impossible to realise \parencite{fetzer2026}.
 
-\subparagraph{Capability of the citizen developer}
+\subparagraph{Capability of the Citizen Developer}
 
 Citizen developers differ in their technical knowledge, their ability and willingness to learn, and the time they can invest. These differences shape what they can build safely. Users with basic coding knowledge were able to make small changes to generated code themselves, while non-technical users struggled \parencite{kobiella2026}. Non-programmers also often lacked the vocabulary to express their intent \parencite{feldman2024}. Low-code research therefore recommends tailoring governance to the people who build \parencite{viljoen2024}, which also apply here in this case. The following examples show how specific skills change what a citizen developer can do with a coding agent such as Claude Code:
 
@@ -1365,9 +1753,11 @@ The capabilities of citizen developers should not be seen as fixed. With GenAI i
 Citizen development is only safe when the technical and governance infrastructure described in Section~XX is in place. Citizen developers need controlled sandboxes and separate environments. Where a platform lacks such safeguards, organisations must add access controls and review gates \parencite{viljoen2024}. A practitioner in the same study warned that people with little programming experience and unrestricted access to company data could unintentionally expose sensitive data \parencite{viljoen2024}. Stage~1 therefore checks whether the infrastructure required for the risk tier is available. If it is not, the idea is restricted to mock-ups with synthetic data or stopped.
 
 
-\subparagraph{Experiment boundaries and gate G1}
+\subparagraph{Experiment Boundaries and Gate G1}
 
-If the idea passes the screening, the business owner and IT agree on the boundaries of the prototype experiment: a time limit, a budget, the approved tools, the data that may be used (normally synthetic or anonymised) and the stop criteria. In line with the exploratory risk level R0, no production credentials are used \parencite{koch2026agentic}. They also agree whether IT will enable, oversee or co-develop, since this affects later staffing and support \parencite{viljoen2024}.
+If the idea passes the screening, the business owner and IT agree on the boundaries of the prototype experiment: a time limit, a budget, the approved tools, the data that may be used (normally synthetic or anonymised) and the stop criteria. In line with the R0 conditions of the risk-tier scheme
+(Section~\ref{sec:risk-tiers}), no production credentials are used
+\parencite{koch2026agentic}. They also agree whether IT will enable, oversee or co-develop, since this affects later staffing and support \parencite{viljoen2024}.
 
 At G1, the decision-makers check whether:
 
@@ -1377,20 +1767,14 @@ At G1, the decision-makers check whether:
     \item no existing solution fits better;
     \item the complexity matches the capability and support of the citizen developer;
     \item the expected benefit justifies the expected effort;
-    \item the data is classified and a provisional risk tier is set;
+    \item the data is classified and a provisional target tier is set;
     \item the infrastructure required for this tier is available;
     \item the experiment boundaries and stop criteria are agreed.
 \end{itemize}
 
 If all criteria are met, the idea moves to stage~2 as an R0 experiment. Otherwise, the gate decides to revise, restrict, hand over or stop. The depth of the screening depends on the risk: for a small R0 idea, a one-page description and a short conversation with IT are sufficient.
 
-\paragraph{Prototype}
-
-The framework uses a lightweight, V-shaped exploration cycle during prototype development and evaluation. It selectively adapts the connection between requirements and evaluation found in Agile V \parencite{koch2026agile}. It is a design adaptation of this thesis, rather than the complete Agile-V process. The SCOPE-V task cycle, separate verification agents and detailed engineering evidence are reserved for the subsequent production-development stage, as they are not needed at this stage and would only create extra work. The Agile-V framework was chosen because AI-assisted development shifts the main challenge from generating code to verifying that the resulting software meets business requirements, functions reliably and satisfies quality standards. Its main advantage is the direct connection between requirements and verification, ensuring that each development decision can be evaluated against predefined expectations rather than relying on plausible AI-generated outputs. Combining the V-Model's structured verification with Agile's iterative flexibility makes it suitable for both development stages: during prototyping, a lightweight V-cycle supports rapid exploration, feedback and validation of business needs; during production development, more rigorous task-level V-cycles introduce independent testing, traceability and documented evidence. This allows the same underlying principle—verification before acceptance—to guide both stages while adapting the level of control to their different objectives and risks.
-
-
-
-\textcite{koch2026agentic} propose converting exploratory dialogues with different LLMs into a reviewed execution brief before starting the develeopment (in this case, the prototype creation), because long conversations can contain superseded assumptions and implicit constraints. This thesis operationalises that principle through a specification handover into a fresh chat or project context before building the consolidated prototype. Similar practices have been observed in vibe coding: developers deliberately opened a new chat or cleared the AI's context before starting a new phase of work \parencite{sarkar2025}, and non-technical participants used a general-purpose chatbot to turn their ideas into a structured prompt or prototype description for a prototyping tool \parencite{kobiella2026}.
+\paragraph{Stage 2: Prototype}
 
 The prototype may consist of screens, a clickable mock-up or a limited interactive demonstration created with an AI-assisted design or prototyping tool. Its purpose is to clarify the business need, explore the proposed workflow and gather early user feedback before committing to production engineering.  
 
@@ -1399,12 +1783,15 @@ This step of prototyping is especially critical for non-technical citizen develo
 
 A prototype addresses these barriers. Instead of describing elements such as navigation, filters or button states in words alone, the citizen developer can show, inspect and correct them step by step. \textcite{kobiella2026} found that AI prototyping tools enabled non-technical users to create high-fidelity prototypes for exploration and stakeholder communication. The same study shows why this form of review suits citizen developers. Non-technical participants could judge whether the output looked as intended, but not whether the underlying code was good, performant or secure \parencite{kobiella2026}. Prototyping therefore relies on a form of validation that citizen developers can actually perform.
 
-Furthermore, a clearly defined prototype is likely to reduce changes during production development. Participants in \textcite{kobiella2026} contrasted the relative ease of building and adding features with the difficulty of modifying or removing them. People with basic coding knowledge could make minor adjustments directly in the code, but non-technical users struggled. One participant noted that without coding experience, even small layout changes would require “even more AI calls” \parencite{kobiella2026}. They also gained little from reading generated code or error messages and when their attempts to fix or improve the code using LLMs failed, many ran out of strategies for what to try next \parencite{feldman2024}. Non-technical users also reported that moving from a prototype to a deployed, working product was very challenging \parencite{kobiella2026}. Clarifying what should be built before production development therefore matters more for citizen developers, because later corrections are harder for them to make. This difficulty can be explained through two possible development patterns: compounding error and compounding correctness. These terms, which are common in the practice of AI-assisted development \parencite{strongdm2026SoftwareFactory}, are used here as a synthesis of sources rather than as established or quantitatively validated laws (see Figure~\ref{fig:compounding-error-correctness}).
-
-
+Furthermore, a clearly defined prototype is likely to reduce changes during production development. Participants in \textcite{kobiella2026} contrasted the relative ease of building and adding features with the difficulty of modifying or removing them. People with basic coding knowledge could make minor adjustments directly in the code, but non-technical users struggled. One participant noted that without coding experience, even small layout changes would require “even more AI calls” \parencite{kobiella2026}. They also gained little from reading generated code or error messages and when their attempts to fix or improve the code using LLMs failed, many ran out of strategies for what to try next \parencite{feldman2024}. Non-technical users also reported that moving from a prototype to a deployed, working product was very challenging \parencite{kobiella2026}. Clarifying what should be built before production development therefore matters more for citizen developers, because later corrections are harder for them to make.
+This difficulty is explained through the patterns of compounding error and compounding correctness in Section~\ref{sec:compounding-error-correctness}.
 
 For the proposed framework, these ideas support placing a prototyping step between the idea and production development especially for citizen developers. During prototyping, the specification and user walkthroughs help identify misunderstandings about what should be built and should reduce rework and improve outcomes for citizen developers. This will be evaluated through ADR.
- 
+
+\subparagraph{V-Shaped Exploration Cycle}
+
+The framework uses a lightweight, V-shaped exploration cycle during prototype development and evaluation. It selectively adapts the connection between requirements and evaluation found in Agile V \parencite{koch2026agile}. It is a design adaptation of this thesis, rather than the complete Agile-V process. The SCOPE-V task cycle, separate verification agents and detailed engineering evidence are reserved for the subsequent production-development stage, as they are not needed at this stage and would only create extra work. The Agile-V framework was chosen because AI-assisted development shifts the main challenge from generating code to verifying that the resulting software meets business requirements, functions reliably and satisfies quality standards. Its main advantage is the direct connection between requirements and verification, ensuring that each development decision can be evaluated against predefined expectations rather than relying on plausible AI-generated outputs. Combining the V-Model's structured verification with Agile's iterative flexibility makes it suitable for both development stages: during prototyping, a lightweight V-cycle supports rapid exploration, feedback and validation of business needs; during production development, more rigorous task-level V-cycles introduce independent testing, traceability and documented evidence. This allows the same underlying principle—verification before acceptance—to guide both stages while adapting the level of control to their different objectives and risks.
+
 Since AI-generated code can appear correct while containing hidden logical errors \textcite{wang2026vibecontract}, we adopt a V-shaped framework in which requirements are defined on the left, the prototype is built at the bottom, and its behaviour is systematically tested against those requirements on the right (see Figure~\ref{fig:prototype-exploration-cycle}).
 
 \begin{figure}[htbp]
@@ -1414,44 +1801,31 @@ Since AI-generated code can appear correct while containing hidden logical error
     \label{fig:prototype-exploration-cycle}
 \end{figure}
 
+\subparagraph{Left Side: Specifying the Prototype}
+
 On the left side, the citizen developer explores the business problem with an AI assistant, such as ChatGPT, and relevant stakeholders. The feature set does not need to be known in advance. Exploration may involve discussing requirements, questioning assumptions, identifying edge cases and generating alternative designs. Small, disposable mock-ups may be created to investigate individual screens or interactions. These exploratory outputs help clarify the solution but are not automatically treated as agreed requirements.
 
 Before building the consolidated prototype, the citizen developer converts the findings into a concise, standalone specification. It identifies the intended users, selected features, main user journeys, relevant edge cases, expected outcomes, exclusions and any simulated behaviour. Contradictory or outdated ideas are removed, and unresolved questions are recorded explicitly. The citizen developer reviews the specification for consistency and business relevance. A more experienced colleague or relevant specialist is involved where uncertainty warrants it.
 
+\textcite{koch2026agentic} propose converting exploratory dialogues with different LLMs into a reviewed execution brief before starting the develeopment (in this case, the prototype creation), because long conversations can contain superseded assumptions and implicit constraints. This thesis operationalises that principle through a specification handover into a fresh chat or project context before building the consolidated prototype. Similar practices have been observed in vibe coding: developers deliberately opened a new chat or cleared the AI's context before starting a new phase of work \parencite{sarkar2025}, and non-technical participants used a general-purpose chatbot to turn their ideas into a structured prompt or prototype description for a prototyping tool \parencite{kobiella2026}.
+The reviewed specification then becomes the input for the build step at the bottom of the V.
+
+\subparagraph{Bottom: Building the Prototype}
+
 At the bottom of the V, the consolidated prototype is built in a fresh chat or project context using the reviewed specification and deliberately selected reference material. A tool such as Claude Design, Figma or another prototyping environment may support this activity. The exploratory conversation is not carried forward as the authoritative build instruction. Instead, the specification provides a clear baseline for what should be demonstrated. The work remains within the approved experiment boundaries, including permitted tools and data.
+
+\subparagraph{Right Side: Evaluating the Prototype}
 
 On the right side, the citizen developer walks through the specified scenarios with intended users or relevant business stakeholders. Findings are compared with the expected outcomes, and a short record captures useful elements, shortcomings and unanswered questions. If feedback changes the intended behaviour, the specification is updated before the prototype is revised. Minor corrections can continue within the build context. Substantial changes return to specification review and may justify a new build context. These return paths are omitted from the figure for readability.
 
+\subparagraph{Gate G2}
 
-
-\paragraph{Build and verify}
-
-
-\subparagraph{General Best Practices}
-% Describe the general practices that apply throughout
-% production development.
-
-
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/fig-compounding-error-correctness.jpg}
-    \caption{Conceptual illustration of compounding correctness and compounding error in AI-assisted development (own illustration).}
-    \label{fig:compounding-error-correctness}
-\end{figure}
-
-Without structural guardrails, unstructured vibe coding can create a negative feedback loop. Initial defects, unstated assumptions and hallucinated logic may be carried forward and build on each other across multi-turn interactions, making subsequent changes harder. \textcite{sarkar2025} describe “context momentum”: earlier prompts and generated outputs influence later development and can make it difficult to move away from initial implementation choices. In their example, the model interpreted a request for historical exchange rates as a single date. When the developer later explicitly requested a date range, the newly generated code still fetched only one date. If such choices are made directly in the production build, they may become fixed before the requirements are fully understood. A related concern is epistemological debt, which \textcite{ginac2026} defines as the gap between a system’s behaviour and its maintainers’ understanding of it. This conceptual framework suggests that accepting generated changes without maintaining that understanding can weaken the ability to diagnose and correct failures. It does not establish that errors inevitably multiply with every interaction. Prototyping can partly address both concerns: implementation choices are explored before the production build, and citizen developers can understand the intended behaviour before production code is generated.
-
- When vibe coding is bounded by a technical harness, explicit specifications and verification against ground truth, later iterations can build on validated results. Correctness and quality may then accumulate over time. A technical harness is a configured environment of tools, constraints and automated checks. A validated prototype allows production development to start from a reviewed basis. When the specification derived from the prototype is reviewed, changes are checked against explicit expected behaviour, and validated corrections are retained in tests and rules, later iterations can build on earlier improvements. In an industry experience report, \textcite{lopopolo2026HarnessEngineering} describes using enforceable architectural constraints, repository documentation and automated feedback to guide coding agents. Similarly, \textcite{wang2026vibecontract} proposes developer-validated contracts that connect intended behaviour with code generation, testing and verification. VibeContract is a vision paper supported by an illustrative example, rather than broad empirical validation. In the proposed framework, the validated prototype is the source of this intended behaviour. Together, these sources motivate the possibility of cumulative quality improvements. They do not guarantee that every iteration increases correctness.
+\paragraph{Stage 3: Build and Verify}
 
 \subparagraph{The Agile V Development Framework}
-% Describe the full Agile V process used to build and
-% evaluate the production solution.
 
 
 In the production-development stage, the framework uses a more complete version of Agile V than in the prototype stage. Each feature or larger change now goes through its own small V-cycle. This cycle includes independent testing, traceability (a clear link between each requirement and its tests) and documented evidence. It combines two elements from earlier work. From Agile V, it takes the idea that separate AI agents build the software, write the tests, run the tests and collect the evidence \parencite{koch2026agile}. From Agentic Agile-V, it takes the six-step SCOPE-V task cycle \parencite{koch2026agentic}. These are complemented by spec-driven development, contracts and practitioner approaches to planning, which are introduced below. How these elements are combined, assigned to agents and placed within the stage-gate lifecycle is a design choice of this thesis. It is important to note that the framework builds upon the technical and governance setup provided by the company explained in Section TBD!!.
-
 
 
 The cycle is based on three principles. The first is spec-driven development (SDD). Every meaningful change starts from a written specification that is stored and versioned together with the code. This specification acts as the contract between people and AI agents. Code, tests and documentation are derived from it. If the specification and the code disagree, the specification counts as correct \parencite{diaz2026}. Furthermore, the specification documentation are complemented by a shared overall plan for the overall change of the agile V cycle \parencite{lopopolo2026HarnessEngineering}. The plan, kept in a file such as plan.md, is created by a Planning Agent from the specification once it has been approved at Checkpoint A. The third principle is contract- and test-based verification. A change is accepted because independent tests and other evidence show that it matches the specification, not because the result looks convincing \parencite{koch2026agentic}. The V-shape links the principles: the left side creates the specification, the bottom builds the change, and the right side checks that the change matches the specification and all the updates are then saved in the plan.md. Most sources behind these ideas are conceptual or based on practitioner experience, and they have not been tested with non-technical users. Their suitability is therefore evaluated through ADR.
@@ -1464,16 +1838,6 @@ To support the with non-functional requirements, Agile V gives two different job
 The cycle operates on three nested levels. In Agentic Agile-V, Agile V steers the project as a whole, while SCOPE-V steers the individual tasks carried out by agents \parencite{koch2026agentic}. In this thesis, the stage-gate lifecycle takes over the steering of the application as a whole, including investment, ownership, pilot and release. Agile V moves one level down and steers how each single change is specified, built and accepted during the engineering and verification stage. SCOPE-V remains at the lowest level and steers how the Build Agent carries out each small task within a change. For example, in an HR leave-request tool, the stage-gate lifecycle decides whether the tool may be piloted, a V-cycle handles the feature for submitting a request, and SCOPE-V handles single tasks within it, such as ensuring that the leave balance cannot become negative. A V-cycle therefore ends when a tested change is accepted, not when the application is released; the release remains a decision of the stage-gate lifecycle (see Figure~\ref{fig:adapted-agile-v-cycle}). 
 
 
-
-
-
-
-
-
-
-
-
-
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig-adapted-agile-v-cycle.pdf}
@@ -1481,10 +1845,7 @@ The cycle operates on three nested levels. In Agentic Agile-V, Agile V steers th
     \label{fig:adapted-agile-v-cycle}
 \end{figure}
 
-\subparagraph{Left side: specifying the change}
-
-
-
+\subparagraph{Left Side: Specifying the Change}
 
 
 Following SDD, the specification is divided into two levels with
@@ -1521,7 +1882,7 @@ saved (Section~\ref{sec:security-rules}).
 
 The citizen developer is responsible for the feature specification. Starting from the tested prototype and its specification, they describe the business need, the intended users and the expected behaviour. Requirements are written as acceptance criteria in the form Given–When–Then, so that each criterion can be turned directly into a test \parencite{diaz2026}. Regarding the non-functional requiements specific to the feature,  AI-generated requirements often leave out non-functional aspects. Quality requirements such as response time, security or the handling of personal data are therefore written down as short quality scenarios with a measurable target \parencite{waseem2025}. In addition, task-level contracts make hidden business rules explicit \parencite{wang2026vibecontract}. Preconditions state what must be true before an action, postconditions what must be true after it, and invariants what must always remain true, for example that a remaining leave balance can never be negative. An AI assistant can draft these criteria, scenarios and contracts from the prototype specification. The citizen developer then checks them, because they describe business rules and expectations rather than technical details. Technical thresholds are confirmed with IT where needed. The resulting brief also states the goal, what is out of scope, which parts of the application are affected, which evidence is required and the risk class \parencite{koch2026agentic}.
 
-At Checkpoint A, the scope, constraints and risk class are confirmed. Checkpoint A therefore works as the conversation-to-contract gate proposed by \textcite{koch2026agentic}: agents build from the reviewed specification, not from the earlier chat. So that citizen developers do not approve their own risk level, the risk class is set by predefined organisational rules rather than by their judgement alone. Routine changes within agreed limits continue under delegated approval rules. Some changes require technical experts: those that bring new risks, affect security-sensitive functions or personal data, have unclear technical requirements or go beyond agreed limits. If later planning reveals new risks, missing requirements or contradictions, the change returns to Checkpoint A.
+At Checkpoint A, the scope, constraints and risk class are confirmed. Checkpoint A therefore works as the conversation-to-contract gate proposed by \textcite{koch2026agentic}: agents build from the reviewed specification, not from the earlier chat. So that citizen developers do not set their own risk class, the risk class is set by predefined organisational rules rather than by their judgement alone (Section~\ref{sec:risk-tiers}). Routine changes within agreed limits continue under delegated approval rules. Some changes require technical experts: those that bring new risks, affect security-sensitive functions or personal data, have unclear technical requirements or go beyond agreed limits. If later planning reveals new risks, missing requirements or contradictions, the change returns to Checkpoint A.
 
 As mentioned earlier, the specification documents are complemented by a shared plan for each change in the agile V cycle. The plan, kept in a separate file such as plan.md, is created by a Planning Agent from the specification once it has been approved at Checkpoint A. The agent divides the approved change into small, testable tasks, links each task to its requirements and arranges them as an ordered checklist. For each task, it defines a task contract based on the approved specification, the expected observable outcome and the requirements that must be met before moving to the next task. The Planning Agent does not create the tests; the next agent turns these requirements into tests. It does not add new behaviour beyond the approved specification.
 Both humans and agents update the plan. After each task is implemented, they record relevant notes and implementation decisions and update the checklist to show progress. This follows the practice of an OpenAI engineering team that built a product entirely with coding agents. The team treated plans as first-class artefacts and captured larger pieces of work in execution plans with progress and decision logs, stored and versioned together with the code \parencite{lopopolo2026HarnessEngineering}. The accompanying guidance describes such plans as documents that are updated at every stopping point so that the work can be resumed from the plan alone \parencite{friel2025}.
@@ -1562,13 +1923,7 @@ The plan in this framework differs from these practitioner sources in three ways
     \end{table}
 
 
-    
-
-
-
-
-
-\subparagraph{Bottom: building the change}
+\subparagraph{Bottom: Building the Change}
 
 During the build, the plan is kept up to date after each task, either by the Planning Agent based on the reports of the Build Agent Agent, or directly by the Build Agents. When the change is complete, the Agents adds a short summary of the outcome and the lessons learned. Decisions recorded in the plan become part of the evidence bundle at Checkpoint B, and recurring lessons are moved into the system specification through the Evolve step. Completed plans are archived with the code, so that later changes can build on them. Both practitioner sources describe the work of experienced engineers and not citizen developers \parencite{friel2025,lopopolo2026HarnessEngineering}. Whether this approach is usable for citizen developers is therefore evaluated through ADR.
 
@@ -1579,7 +1934,6 @@ The Build Agent and the Test Designer Agent then do their work separately and in
     \centering
     \includegraphics[width=\textwidth]{figures/image.png}
 \end{figure}
-
 
 
 The Build Agent completes each task through the SCOPE-V cycle \parencite{koch2026agentic}. In every session, it reads the system specification together with the feature specification and its current task in the plan. It carries out all six SCOPE-V steps for each task on its own:
@@ -1664,12 +2018,7 @@ The other agents therefore work on the change as a whole, not on each task. The 
 This set-up has an advantage and a drawback. Only one agent works on each task, which keeps cost and effort low, and the independent checks happen where the change is accepted. However, mistakes that the Build Agent's own checks miss are only found after several tasks. For high-risk changes, the independent tests are therefore run after each task or after each milestone in the plan. This way of dividing the work between the agents is a design choice of this thesis. The test agent and the verification process will be explained in more detail in Section~TBD, as it is one of the most critical steps in vibe coding \parencite{bcgplatinion2026agentic}.
 
 
-
-
-
-
 The agents do not talk to each other directly. Instead, they coordinate through shared, versioned files: the specification, the plan, the tests and the test reports. Each agent starts in a fresh session, reads only the files its role allows and writes its results back to these files. The order in which the agents work is fixed by the V-cycle (planning, then building and test design, then verification, then auditing). No agent decides this order. The citizen developer starts each step with a prompt that they have reviewed. The Planning Agent can suggest these prompts or check prompts the citizen developer has written. Each prompt mainly states which role the agent takes, which files it should read and what result it should produce. Because the prompts are concise, the citizen developer can understand them fully and review them quickly. They then check the outcome of each step before the next step begins.
-
 
 
 The citizen developer therefore acts as the accountable owner of the change rather than as a programmer. They define the intent, approve the specification at Checkpoint A, answer open questions, adjust the plan where needed and accept the evidence at Checkpoint B. What they verify themselves is limited to what they can judge: functional behaviour and business rules. Non-functional qualities remain with automated checks, the testing agents and, where needed, IT specialists (see Section~TBD).
@@ -1681,7 +2030,7 @@ The same reasoning applies to how the agents themselves are coordinated. In Agil
 Separate contexts remain important, because model performance tends to decline as the input grows longer and mixes unrelated information \parencite{hong2025context}. The framework achieves this through a fresh session for each role rather than through an orchestrating agent. The Planning Agent may still use short-lived sub-agents for read-only tasks, such as summarising code or answering a question from the citizen developer. This keeps its own planning context free of technical detail \parencite{anthropic2025context}. These sub-agents do not change any files. The trade-off is that the citizen developer has to carry out more steps manually. The ADR cycles evaluate whether this extra complexity is acceptable (Section~TBD).
 
 
-\subparagraph{Right side: verifying and accepting the change}
+\subparagraph{Right Side: Verifying and Accepting the Change}
 \label{sec:testing-verification}
 
 Testing decides whether AI-generated work is accepted. Professional developers usually check code in two ways: they run tests and
@@ -1830,7 +2179,6 @@ The allow-list is a design choice of this thesis; its effort for IT and
 its effect on citizen developers have not been evaluated.
  
  
-
 \textbf{Order of the tests.} After the Build Agent has completed all tasks,
 the Verification Agent runs the independent tests in four steps, from narrow
 to wide and from fast to slow, so that a failure can be traced to its cause:
@@ -1873,7 +2221,6 @@ test conditions or write extra scripts that force a test to pass
 independent tests. Every change to a test file is visible in version control
 and requires approval by the IT reviewer. This rule is a design choice of
 this thesis.
-
 
 
 \textbf{Automated review of the code.}
@@ -1936,31 +2283,8 @@ remains restricted or on hold and is not treated as verified.
 
 This follows both Agile~V sources, which keep technical approval in the loop.
 In Agile~V, the responsible engineer holds final approval authority at the
-second human gate \parencite{koch2026agile}. \textcite{koch2026agentic}
-defines four risk levels, each with stricter requirements for evidence and
-approval:
-
-\begin{table}[H]
-    \centering
-    \small
-    \caption{Risk levels in Agentic Agile-V \parencite{koch2026agentic}.}
-    \label{tab:agile-v-risk-levels}
-    \begin{tabular}{p{3.2cm} p{6.2cm} p{4.2cm}}
-    \hline
-    \textbf{Risk level} & \textbf{Typical changes} &
-        \textbf{Approval requirement} \\
-    \hline
-    R0 exploratory & Throwaway prototypes and internal demos & Review
-        optional \\
-    R1 routine & Documentation and small code clean-ups & Normal code
-        review \\
-    R2 production & New features and bug fixes & Mandatory reviewer
-        approval \\
-    R3 high assurance & Security-related functions, for example & Explicit
-        sign-off and release gate \\
-    \hline
-    \end{tabular}
-\end{table}
+second human gate \parencite{koch2026agile}. How strict the approval is
+depends on the risk class of the change (Table~\ref{tab:change-classes}).
 
 The prototype stage of this framework corresponds to R0. Most changes made by
 citizen developers are expected to fall under R2 and therefore require
@@ -1972,12 +2296,11 @@ shows that the change meets its specification and looks more closely only
 where the evidence is weak. \textcite{diaz2026} describe this shift as
 evidence-backed acceptance and argue that it makes review faster and more
 informative. The depth of the review is set explicitly for each type of
-change and can be revised as experience grows \parencite{diaz2026}. Which
-types of change belong to which risk level must be defined for SIXT~HR rather
-than taken over directly from these sources. The split between business
-acceptance by the citizen developer and technical approval by the expert is a
-design choice of this thesis. It aims to keep technical control while
-reducing the effort that each change demands from scarce experts.
+change and can be revised as experience grows \parencite{diaz2026}. The split
+between business acceptance by the citizen developer and technical approval
+by the expert is a design choice of this thesis. It aims to keep technical
+control while reducing the effort that each change demands from scarce
+experts.
 
 \textbf{Return paths and release.} Errors in the code send the work back to
 the task cycle. Major changes to requirements or constraints send it back to
@@ -2063,7 +2386,9 @@ allows experts to review changes with manageable effort; whether expert
 availability becomes a bottleneck; and how many errors come from the
 specification rather than from the code.
 
-\paragraph{Test application}
+\subparagraph{Gate G3}
+
+\paragraph{Stage 4: Test Application}
 \label{sec:test-application}
 
 After gate~G3, all planned changes have been accepted one by one. Stage~4
@@ -2115,15 +2440,15 @@ not enter stage~4, because they remain prototypes.
     \textbf{Tier} & \textbf{Technical tests} & \textbf{Security tests} &
         \textbf{Business tests} & \textbf{G4 decision} \\
     \hline
-    R1 routine & Citizen developer runs the standard IT test kit; IT reviews
+    R1 low impact & Citizen developer runs the standard IT test kit; IT reviews
         the evidence report & Automated scans and role tests; IT reviews
         findings & Citizen developer with users & Business owner and IT
         reviewer \\
-    R2 production & IT owns the tests; agents and pipeline run them & As R1,
+    R2 moderate impact & IT owns the tests; agents and pipeline run them & As R1,
         plus scans of the running application; data protection check if
         personal data is processed & Citizen developer and business owner &
         Business owner, IT reviewer, specialists if triggered \\
-    R3 high assurance & IT leads all technical testing; the application is
+    R3 high impact & IT leads all technical testing; the application is
         co-developed or handed over & As R2, plus a penetration test by IT
         security; data protection and employee representation involved &
         Business owner with users & Explicit sign-off by business owner, IT
@@ -2386,11 +2711,9 @@ through eADR. The evaluation examines how many errors stage~4 finds that passed
 Checkpoint~B, how many of them stem from the specification, whether users can
 write usable test cards and whether the effort for IT remains manageable.
 
-\paragraph{Pilot}
-% Describe the limited-user pilot, value and support measurement,
-% and the criteria for gate G5.
+\paragraph{Stage 5: Pilot}
 
-\paragraph{Operate and reassess}
+\paragraph{Stage 6: Operate and Reassess}
 
 \textbf{Monitoring new vulnerabilities.} An application that passed all
 checks at release can become insecure later, when a weakness is found in
@@ -2417,8 +2740,7 @@ thesis. They aim to spare each citizen developer from following security
 news alone.
  
 
-
-\section{Evaluation and Findings}
+\section{Final Testing, Evaluation and Findings}
 \label{sec:evaluation}
 
 
@@ -2447,40 +2769,22 @@ Unclear what had been verified & Specification, independent tests, evidence in \
 \bottomrule
 \end{tabular}
 \end{table}
-% TODO: complete this table. The full version can sit in the
-% framework chapter (design rationale) and be reused in the evaluation.
  
-
-% Insert thesis text here.
 
 \subsection{Starting Point}
 \label{sec:starting-point}
 
-% Insert thesis text here.
-
 
 \section{Discussion}
-
-% Insert thesis text here.
 
 
 \section{Conclusion}
 
-% Insert thesis text here.
-
-
-% ================================================================
-% REFERENCES
-% ================================================================
 
 \newpage
 
 \printbibliography
 
-
-% ================================================================
-% APPENDIX
-% ================================================================
 
 \appendix
 
@@ -2500,7 +2804,6 @@ users. Table~\ref{tab:app-testing-who-when} shows who does what and when.
 Table~\ref{tab:app-testing-all-tests} lists all tests and scans and shows at
 which level each one is written and where it is run again.
 
-% Defines a left-aligned flexible column. Rename "Y" if it is already used.
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \begin{table}[htbp]
@@ -2663,13 +2966,9 @@ which level each one is written and where it is run again.
     narrower or wider scope. --: not done at this level.
 \end{table}
 
-% ================================================================
-% END
-% ================================================================
 
 \end{document}
 
-% --- draft notes (not compiled) ---
 Questions to answer in conclustion: 
 how many errors come from the specification rather than from the code
 whether expert availability becomes a bottleneck
