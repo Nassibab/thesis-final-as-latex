@@ -1163,7 +1163,7 @@ Section~\ref{sec:evaluation}.
 \label{sec:risk-tiers}
 
 The risk-tier scheme defines how much control an application and each of
-its changes need. It is set once for all citizen-developed applications.
+its changes need. The risk-tier scheme is set once for all citizen-developed applications.
 Applying it to one application, for example deciding at G1 that an
 application is R2, is part of the working practices
 (Section~\ref{sec:working-practices}). Matching control to risk allows
@@ -1194,7 +1194,7 @@ but each level has its own criteria:
     who decides at the gates, which evidence is required and which
     infrastructure and skills must be available.
     \item The \emph{risk class} of a change describes the type of a single
-    change, such as a text correction or a new function. It decides how
+    change, such as a new function or a certain module or a text correction. It decides how
     closely the change is reviewed at Checkpoint~B.
 \end{itemize}
 
@@ -1278,9 +1278,11 @@ data, ordinary personal data and sensitive personal data.
         team process relies on it; a manual fallback exists & A critical
         or cross-departmental process relies on it without a fallback \\
     \addlinespace
-    Security-sensitive functions & Only the standard company login &
-        Role-based access within the application & Manages access rights
-        or logins beyond the application \\
+    Security-sensitive functions & Company login only; all users have
+        the same rights in the application & The application has its own
+        roles that decide who may see or do what, such as employee and
+        manager & The application grants or changes access rights in
+        other systems, or uses its own login outside the company login \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -1314,15 +1316,42 @@ the scope in this way is often a better choice than accepting a higher
 tier. If a factor cannot be judged with confidence, the higher level is
 assumed \parencite{kang2026}.
 
-\subparagraph{What Each Tier Requires}
+The high water mark keeps the rule simple and safe, but it can create
+extra work: a single sensitive function raises the tier of the whole
+application. The framework limits this extra work in two ways. First,
+the tier of the application and the risk class of each change are set
+separately (Table~\ref{tab:change-classes}). In the example above, the
+change that imports and stores the home addresses touches personal data
+and a system of record. It is therefore classed at least R2 and is
+checked closely by IT, in particular how the addresses are stored and
+who can see them. Later changes that only adjust the event list or the
+layout are routine (R1) and receive a lighter review. Independent tests
+still run for every change, but the close attention of IT is
+concentrated on the one sensitive part rather than spread evenly over
+the whole application. Second, the sensitive part can be separated from
+the rest. IT may build or provide this function itself, for example as
+a ready-made component that reads the addresses in an approved way,
+while the citizen developer builds the remaining application.
 
+What does not become lighter are the requirements of the tier for the
+application as a whole, such as the environment, monitoring and the
+decision-makers at the gates (Table~\ref{tab:tier-consequences}). A
+weakness anywhere in the application could expose the addresses, so the
+whole application must be protected at the higher tier. The separation
+therefore reduces the review effort per change, not the protection of
+the application. Both ways of limiting the extra work are design
+decisions of this thesis; whether they reduce expert effort in practice
+has not been evaluated.
+
+\subparagraph{What Each Tier Requires}
 Table~\ref{tab:tier-consequences} shows what each tier requires. The
-support models follow the distinction between IT enabling, overseeing or
+role of IT follows the distinction between IT enabling, overseeing or
 co-developing citizen development \parencite{viljoen2024}. The required
 infrastructure is described in Layer~2 (Section~\ref{sec:layer2}) and
-the required skills in Layer~4 (Section~\ref{sec:layer4}). The detailed
-responsibilities for testing the whole application are part of the
-working practices (Table~\ref{tab:g4-responsibility}).
+the required skills in Layer~4 (Section~\ref{sec:layer4}). When and by
+whom these requirements are checked during the development of an
+application is described in the working practices
+(Section~\ref{sec:working-practices}).
 
 \begin{table}[H]
     \centering
@@ -1335,30 +1364,30 @@ working practices (Table~\ref{tab:g4-responsibility}).
     & \textbf{R0 exploratory} & \textbf{R1 low impact} & \textbf{R2
         moderate impact} & \textbf{R3 high impact} \\
     \midrule
-    Support by IT & Enable & Enable & Oversee & Co-develop or hand
-        over \\
+    Role of IT & \emph{Enable}: provides tools and a sandbox and answers
+        questions & \emph{Enable}: as R0, and reviews the results before
+        real use & \emph{Oversee}: follows the work and approves every
+        change technically & \emph{Co-develop or hand over}: builds
+        together with the citizen developer or takes over \\
     \addlinespace
-    Decision-makers at gates & Business owner and IT reviewer at G1 &
-        Business owner and IT reviewer & As R1, plus specialists if
-        triggered & Explicit sign-off by business owner, IT and
-        specialists \\
+    Data & Only invented or anonymised data & Real data, but no personal
+        data & Ordinary personal data, within the data protection rules &
+        Sensitive personal data, only in environments managed by IT \\
     \addlinespace
-    Minimum evidence & Prototype specification and walkthrough record &
-        Standard IT test kit and automated scans, reviewed by IT &
-        Independent tests for every change, technical approval, full
-        application tests & As R2, plus penetration test and specialist
+    Checks before real use & None; not used for real work & Automated
+        checks; short review of the results by IT & Every change tested
+        and approved by IT; whole application tested before users get
+        access & As R2, plus security tests by experts and specialist
         assessments \\
     \addlinespace
-    Environment and data & Isolated sandbox; synthetic or anonymised
-        data; no production access & Standard environments from the
-        starter kit; real data only within the approved class & As R1,
-        plus monitoring, alerts and tested rollback & Environments
-        managed by IT \\
+    Who approves & Business owner and IT agree on the experiment &
+        Business owner and IT & As R1, plus specialists such as data
+        protection where needed & Business owner, IT and specialists, each
+        with an explicit sign-off \\
     \addlinespace
     Skills of the builder & Capability assessment; course on the
-        framework process & As R0, plus basics of Git and the coding
-        agent & As R1, plus an IT mentor & Capability assessment; works
-        in a team led by IT \\
+        framework process & As R0, plus basics of Git and the coding agent
+        & As R1, plus an IT mentor and extra courses & As R2, plus proven experience (e.g. through at least one completed R2 application) \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -1456,6 +1485,269 @@ in Section~\ref{sec:evaluation}.
 
 \paragraph{Scope Rules and Handover Routes}
 \label{sec:scope-rules}
+
+Not every application, and not every change, should be built by a
+citizen developer. The scope rules decide whether citizen development
+is a feasible way to build something and what happens if it is not.
+They complement the risk-tier scheme. The tier describes the
+\emph{impact} of an application: how much harm it could cause and
+therefore how far IT must be involved, up to co-developing or taking
+over (Section~\ref{sec:risk-tiers}). The scope rules describe its
+\emph{fit}: whether this citizen developer, on the approved platform
+and with the support that is actually available, can build and
+maintain it with reasonable effort. The two questions are independent.
+A low-impact application can be too complex for its builder, and a
+high-impact application can be technically simple and still require
+IT. Both questions are asked for the application as a whole and again
+for each change, because a single change can exceed what the builder
+can do even when the application fits. When this happens is described
+in the working practices (Section~\ref{sec:working-practices}).
+
+\subparagraph{Fit Criteria}
+
+Fit is judged by four criteria:
+\begin{itemize}
+    \item \textbf{Platform fit.} Can the application be built with the
+    approved tools, technology stack, components and interfaces, and is
+    the infrastructure that its risk tier requires available, such as
+    isolated environments, the automated pipeline and monitoring
+    (Sections~\ref{sec:layer2} and~\ref{sec:layer3})? Research on
+    low-code development recommends that IT co-develops or leads when an
+    application needs complex integrations or must meet enterprise
+    standards \parencite{viljoen2024}.
+
+    \item \textbf{Skill fit.} Do the required skills match the assessed
+    capability of the citizen developer (Section~\ref{sec:layer4})?
+    Non-technical users can judge what software shows, but not the code
+    behind it \parencite{kobiella2026}, and they often lack the
+    vocabulary to express their intent \parencite{feldman2024}.
+
+    \item \textbf{Support fit.} Is the time of IT reviewers and
+    specialists that the required oversight needs actually available
+    (Section~\ref{sec:decision-rights})?
+
+    \item \textbf{Size and complexity.} How many user roles, interacting
+    features, integrations and data structures are involved?
+    Non-programmers performed well on small, fully specified tasks
+    \parencite{esnaola2026}, but features that combined several systems
+    required many iterations \parencite{fortesferreira2025}.
+\end{itemize}
+
+Fit is a question of efficiency as well as ability. A step that a
+software engineer completes with AI support in minutes may take a
+citizen developer days or even weeks to learn. In such cases, it is usually cheaper
+for IT to provide that part. Practitioners in low-code programmes make
+the same point: building complex applications oneself is often not
+the most efficient way \parencite{binzer2024}. The expected learning
+effort is therefore part of the business case of an application
+(Section~\ref{sec:working-practices}). The four criteria and their
+selection are a design decision of this thesis.
+
+Technical complexity is also a moving target. The length of software
+tasks that frontier AI agents complete with a 50\% success rate has
+roughly doubled every seven months since 2019 \parencite{kwa2025}. The
+same study reports much shorter task lengths at higher reliability and
+lower success on less structured tasks, and its extrapolation is
+uncertain. If the trend continues, technical complexity will limit
+citizen development less and less, and the scope rules must be revised
+regularly. Two things, however, do not shrink with better models, at least in the
+medium term: the impact of an application and the human effort needed
+to check and correct AI output. In a controlled experiment with
+professional developers, this validation and correction, rather than
+properties of the code, was the main driver of effort
+\parencite{alaswad2026hybrid}. The second factor may change as models
+improve, but current evidence gives no sign of this yet.
+
+\subparagraph{Estimating Technical Complexity}
+
+When AI writes the code, traditional size measures such as lines of
+code or story points explain effort poorly
+\parencite{alaswad2026framework,alaswad2026hybrid}.
+\textcite{alaswad2026framework} instead describe effort through five
+dimensions: how hard the task is for the model to get right, how
+complete the information given to it is, how far a change spreads
+through the code, how many correction rounds are needed and how much
+human checking is required. They observe these dimensions during and
+after a task. This thesis turns them into questions that the citizen
+developer answers before building: for the application during
+screening and for each change when it is specified
+(Table~\ref{tab:complexity-estimation}). The last column shows how the
+same dimensions become visible during the build.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Estimating technical complexity before and during the build
+    (own representation, dimensions based on
+    \textcite{alaswad2026framework}).}
+    \label{tab:complexity-estimation}
+    \begin{tabular}{@{}p{2.2cm} p{3.4cm} p{2.5cm} p{2.8cm} p{2.7cm}@{}}
+    \toprule
+    \textbf{Dimension} & \textbf{Question for the citizen developer} &
+        \textbf{Simpler} & \textbf{More complex} & \textbf{Sign during
+        the build} \\
+    \midrule
+    Clarity of information & Are the goal, business rules and data
+        clear and written down? & Validated prototype; explicit rules &
+        Rules exist only in people's heads; many open questions & The
+        agent keeps asking for missing information \\
+    \addlinespace
+    Familiarity for the AI & Is this a common pattern or unusual
+        logic? & Forms, tables, standard role checks & Unusual
+        calculations; many interacting rules; rare libraries &
+        Repeated corrections; inconsistent results \\
+    \addlinespace
+    Reach & How many parts of the application does it touch? & A new,
+        self-contained part & Changes spread across existing features
+        or interfaces & Features that worked before break \\
+    \addlinespace
+    Checking effort & Can I check the result myself by looking at it? &
+        Behaviour visible on the screen & Hidden behaviour, such as
+        access rules or data in other systems & Many findings in tests
+        or reviews \\
+    \addlinespace
+    Correction rounds & -- observed only when building - can not be estimated before & -- & -- & The same problem
+        returns after several attempts \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+The answers are not added up, because the weight of each dimension
+cannot be assumed in advance \parencite{alaswad2026framework}. Instead,
+a simple rule applies: if any question is answered \enquote{more
+complex}, the citizen developer discusses the application or change
+with an IT mentor before building. If an answer is uncertain, it counts
+as more complex \parencite{moreira2026}. The mentor then recommends one
+of the routes described below. The questions and this rule are design
+decisions of this thesis.
+
+Checking effort deserves particular attention. A standard module for
+role-based access involves many roles and rules, yet a language model
+can generate it with little effort because it follows a familiar
+pattern \parencite{alaswad2026framework}. A citizen developer, however,
+cannot confirm by looking at the screen that every role sees only what
+it may see \parencite{kobiella2026}. Low effort for the AI therefore
+does not mean low effort for the builder.
+
+\subparagraph{Warning Signs during Development}
+
+Fit is not decided once at the start. It can disappear during the
+build, often gradually. The framework therefore names signs that
+anyone, including the citizen developer, can notice:
+
+\begin{itemize}
+    \item the agent repeatedly needs information that should be in the
+    specification;
+    \item the same problem returns after several repair attempts, or
+    the agent reports work as complete that is not
+    \parencite{alhasan2026,uddin2026};
+    \item new changes break features that worked before;
+    \item the citizen developer can no longer explain what the
+    application does or why \parencite{ginac2026};
+    \item the scope grows beyond what was agreed, or a component,
+    library or integration outside the approved platform is needed;
+    \item time or budget clearly exceed the agreed limits.
+\end{itemize}
+
+The first three signs correspond to the build-time column of
+Table~\ref{tab:complexity-estimation}. When a sign appears, the scope
+rules are applied again, and the work continues only on one of the
+routes below. The list is a design decision of this thesis.
+
+\subparagraph{Routes}
+
+When fit is lacking, seven routes are available
+(Table~\ref{tab:scope-routes}). They are ordered by increasing
+involvement of IT and follow the distinction between IT enabling,
+overseeing or co-developing citizen development
+\parencite{viljoen2024}. At the gates, the routes are applied through
+the gate outcomes described in the working practices
+(Section~\ref{sec:working-practices}). Within a stage, a change that
+does not fit is split, or IT builds that part. If the misfit affects
+the application as a whole, its fit is reassessed at the next gate.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Routes when an application or change does not fit citizen
+    development (own representation).}
+    \label{tab:scope-routes}
+    \begin{tabular}{@{}p{3.4cm} p{6.6cm} p{3.4cm}@{}}
+    \toprule
+    \textbf{Route} & \textbf{What changes} & \textbf{Gate outcome} \\
+    \midrule
+    Targeted help & The citizen developer continues after a course,
+        mentoring or one question to an expert & Go or revise \\
+    \addlinespace
+    Reduce scope & The difficult part is left out, split off or
+        postponed & Restrict \\
+    \addlinespace
+    Reuse & An existing application, standard product or library
+        solves the problem instead & Stop (no new build) \\
+    \addlinespace
+    IT component & IT provides the difficult part, for example an
+        approved data interface; the citizen developer builds the rest
+        & Go, with conditions \\
+    \addlinespace
+    Co-development & IT and the citizen developer build together & Go,
+        with a changed role of IT \\
+    \addlinespace
+    Handover & IT or professional developers take over the
+        application & Hand over \\
+    \addlinespace
+    Stop & The work ends; what was learned is recorded & Stop \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Reducing the scope is often the best first choice. In MeRGE, for
+example, the planned SAP integration of an HR assistant was postponed
+because it would have raised the criticality of the processed data
+\parencite{fetzer2026}. Restricting, handing over and stopping are
+legitimate outcomes, not failures (Section~\ref{sec:scope}).
+
+\subparagraph{Handover}
+
+A handover is a planned route, not an emergency. In one organisation
+studied by \textcite{binzer2024}, high-impact ideas tested by citizen
+developers were then implemented by professionals, who thus started
+from tested prototypes. The framework is designed so that IT can
+continue from the versioned repository, the specification, the plan,
+the tests and the evidence, without reconstructing the work from chat
+histories \parencite{friel2025,diaz2026}. These practices are
+described in Section~\ref{sec:working-practices}. Whether a handover
+works this way in practice is part of the evaluation.
+
+IT must accept a handover. If IT has no capacity, the application is
+restricted or stopped; it does not continue without support, because
+unsupported applications become shadow IT and technical debt
+\parencite{viljoen2024}. Who owns the application after a handover is
+described in Section~\ref{sec:ownership}.
+
+\subparagraph{Ownership and Revision}
+
+IT management owns the scope rules together with HR IT. IT reviewers
+and mentors apply them, and anyone may report a warning sign, which is
+then handled through the escalation route
+(Section~\ref{sec:exception-process}). The rules are revised from
+experience. If many handovers occur for the same reason, IT can either
+provide the missing part as a reusable component
+(Section~\ref{sec:starter-kit}) or adjust the rule. Low-code programmes
+show that rules can be loosened as knowledge grows, and that rules
+which are too strict push people into shadow IT \parencite{binzer2024}.
+
+\subparagraph{Limits of the Scope Rules}
+
+The fit criteria, the complexity questions, the warning signs and the
+routes are design proposals of this thesis and have not been
+validated. They draw mainly on research on low-code development and on
+studies with professional developers. The dimensions of
+\textcite{alaswad2026framework} come from a conceptual analysis and
+were tested in one experiment with professional developers
+\parencite{alaswad2026hybrid}; their translation into questions for
+citizen developers has not been tested. Concrete thresholds, such as
+how many user roles are too many, depend on the organisation and are
+not fixed here.
 
 \paragraph{Data and AI-Tool Rules}
 \label{sec:data-tool-rules}
@@ -1710,9 +2002,7 @@ The citizen developer first describes the problem, the intended users and what s
 
 The business owner then compares the expected benefit with the expected effort. AI makes development cheaper, so problems that used to be too small for professional development may now be worth solving. It does not, however, make development free. The effort for specification, review, testing and later maintenance remains and is easily underestimated \parencite{wangliu2026}. In a controlled trial, experienced developers even worked more slowly with AI while believing they were faster \parencite{moreira2026}. The estimate therefore includes the time of the citizen developer, tool costs, the review effort of IT and specialists, and the operation of the application after release. Expert time, not code generation, is usually the scarcest resource.
 
-\subparagraph{Suitability for Citizen Development}
-
-Not every application should be built by citizen developers. Research on low-code development shows that IT should co-develop or lead when an application requires complex integrations, must meet enterprise standards or demands technical expertise.Mission-critical or cross-functional processes also need more standardisation than isolated tasks \parencite{viljoen2024}. Although this research concerns low-code platforms rather than AI-assisted coding, the same reasons apply. They are even stronger here, because citizen developers cannot inspect the generated code \parencite{kobiella2026}. MeRGE shows a related decision: the planned SAP integration of the HR assistant was postponed because it would have raised the criticality of the processed data \parencite{fetzer2026}. Studies with non-programmers point in the same direction. They performed well on small, fully specified tasks \parencite{esnaola2026}, but features that combined several systems required many iterations \parencite{fortesferreira2025}. Table~\ref{tab:stage1-warning-signs} lists the warning signs used in this stage.
+Research on low-code development shows that IT should co-develop or lead when an application requires complex integrations, must meet enterprise standards or demands technical expertise.Mission-critical or cross-functional processes also need more standardisation than isolated tasks \parencite{viljoen2024}. Although this research concerns low-code platforms rather than AI-assisted coding, the same reasons apply. They are even stronger here, because citizen developers cannot inspect the generated code \parencite{kobiella2026}. MeRGE shows a related decision: the planned SAP integration of the HR assistant was postponed because it would have raised the criticality of the processed data \parencite{fetzer2026}. Studies with non-programmers point in the same direction. They performed well on small, fully specified tasks \parencite{esnaola2026}, but features that combined several systems required many iterations \parencite{fortesferreira2025}. Table~\ref{tab:stage1-warning-signs} lists the warning signs used in this stage.
 
 \begin{table}[H]
     \centering
@@ -1733,14 +2023,23 @@ Not every application should be built by citizen developers. Research on low-cod
     \end{tabular}
 \end{table}
 
-A warning sign does not always end an idea. Often the scope can be reduced so that the risky part is left out or postponed, as in the MeRGE example.
+\subparagraph{Suitability for Citizen Development}
+
+The citizen developer estimates the technical complexity of the idea
+with the questions in Table~\ref{tab:complexity-estimation}. The IT
+reviewer then checks its fit with the approved platform, the skills of
+the builder and the available support
+(Section~\ref{sec:scope-rules}). If the idea does not fit, G1 applies
+one of the routes in Table~\ref{tab:scope-routes}; often the difficult
+part can simply be left out or postponed.
 
 \subparagraph{Reuse and Technical Complexity}
 
 Before anything new is built, the citizen developer and IT check whether a similar application, an existing  tool or a standard product or open source software already solves the problem. MeRGE includes this as a make-or-buy decision that considers the technologies already available in the organisation \parencite{fetzer2026}. IACDM applies the same idea to individual components: if a mature library exists, it should be used; if not, a small proof of concept comes first \parencite{moreira2026}. This matters for AI-assisted development, because AI agents tend to produce plausible new code for problems that already have a tested solution \parencite{moreira2026}.
 
-IT then judges the technical complexity: the required integrations, the data model, the number of user roles and whether the application fits the approved platform and technology stack. IACDM suggests judging complexity from observable signals rather than from estimated code size, with a simple rule: if a project cannot confidently be called simple, it should be treated as complex \parencite{moreira2026}.
-
+IT then checks the complexity estimate of the citizen developer and
+whether the application fits the approved platform and technology
+stack (Section~\ref{sec:scope-rules}).
 \subparagraph{Data, Risk and Legal Requirements}
 
 The data that the application would process are classified first, as in
@@ -1784,9 +2083,9 @@ At G1, the decision-makers check whether:
 
 \begin{itemize}
     \item the problem, users and success criteria are described;
-    \item no warning sign remains unresolved;
+    \item the application fits citizen development, or a route has
+    been agreed (Section~\ref{sec:scope-rules});
     \item no existing solution fits better;
-    \item the complexity matches the capability and support of the citizen developer;
     \item the expected benefit justifies the expected effort;
     \item the data is classified and a provisional target tier is set;
     \item the infrastructure required for this tier is available;
