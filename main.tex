@@ -1355,9 +1355,10 @@ working practices (Table~\ref{tab:g4-responsibility}).
         plus monitoring, alerts and tested rollback & Environments
         managed by IT \\
     \addlinespace
-    Skills of the builder & Course on the framework process & As R0,
-        plus basics of Git and the coding agent & As R1, plus capability
-        assessment and an IT mentor & Works in a team led by IT \\
+    Skills of the builder & Capability assessment; course on the
+        framework process & As R0, plus basics of Git and the coding
+        agent & As R1, plus an IT mentor & Capability assessment; works
+        in a team led by IT \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -1600,6 +1601,7 @@ The logic of deciding early before investing more is also found in MeRGE, the Me
 MeRGE is nevertheless used in this thesis because its organisational logic does not depend on this difference. Deciding early whether a use case is worth pursuing, linking business value with data sensitivity and risk, involving experts at defined points and introducing software through a controlled pilot apply to any internally developed software. MeRGE is also close to the setting of this thesis: it was developed with action design research in a large German company and includes an HR use case. This thesis therefore adopts MeRGE selectively. Its Precheck and Conceptualization phases inform the early screening at G1 and G2, and its Quality and Deployment phases inform the readiness checks, approvals and pilot at G4 and G5. Its GenAI-specific measures, such as protection against harmful outputs, are not adopted. The transition from prototype to production, the controls for AI-assisted coding and the operation stage are added by this thesis.
 
 \paragraph{Overall Structure}
+\label{sec:stage-gate-structure}
 
 The framework moves an application through six stages, each followed by a gate (Table~\ref{tab:stage-gate-overview}).
 
@@ -1614,7 +1616,7 @@ The framework moves an application through six stages, each followed by a gate (
     \hline
     1 Screen and scope & Check suitability, value, data and risk; set limits for the experiment & G1: May the idea be explored? \\
     2 Prototype & Clarify the need with a prototype and validate it with users & G2: Is production development justified? \\
-    3 Build and verify & Build the application in small changes, each verified in an Agile-V cycle & G3: Is the planned scope complete and accepted? \\
+    3 Build and verify & Build the application as a series of changes, each passing its own Agile-V cycle & G3: Are all planned changes accepted and is the planned scope complete? \\
     4 Test application & Test the whole application: end-to-end, security, data protection, user acceptance and operational readiness & G4: Is it ready for real users? \\
     5 Pilot & Use with a limited group; measure value and support effort & G5: Should it be released more widely? \\
     6 Operate and reassess & Monitor, maintain and change the application; reassess value and risk & G6: Continue, change, hand over or retire? \\
@@ -1622,9 +1624,22 @@ The framework moves an application through six stages, each followed by a gate (
     \end{tabular}
 \end{table}
 
+The framework distinguishes three units of work. The \emph{application}
+is the whole tool and passes through one stage-gate lifecycle, from idea
+to retirement. A \emph{change} is one meaningful piece of work on the
+application, such as a new feature, a larger extension or a bug fix. The
+first build in stage~3 consists of a series of changes, and updates
+during the pilot and operation are further changes. Each change passes
+its own Agile-V cycle, from Checkpoint~A to Checkpoint~B. A \emph{task}
+is a small step within a change, which the Build Agent carries out
+through the SCOPE-V cycle. In a leave-request tool, for example, the
+tool is the application, submitting a leave request is a change, and
+ensuring that the leave balance can never become negative is a task.
+This division into three units is a design decision of this thesis.
+
 Stages~2 and~3 are described in detail in Sections~TBD. The other stages build on MeRGE, which moves from an early check through conceptualisation, development and quality assurance to deployment \parencite{fetzer2026}. The framework departs from MeRGE in two ways. First, it adds a separate test stage for the whole application, because accepting individual changes does not show that the application works as a whole. Second, it adds an operation stage, because MeRGE excludes maintenance \parencite{fetzer2026}, while AI-built applications in particular risk losing the shared understanding of why they exist and how they work \parencite{storey2026}.
 
-The stage-gate process serves as the macro framework of this thesis. It steers the application as a whole and decides at each gate whether it may advance. Within individual stages, it adopts smaller frameworks that guide the detailed work. In stage~2, a lightweight V-shaped cycle adapted from Agile~V guides how the prototype is specified, built and evaluated \parencite{koch2026agile}. In stage~3, a fuller Agile-V cycle guides how each change is specified, built and accepted, and within each change the SCOPE-V cycle guides how an agent completes a single task \parencite{koch2026agile,koch2026agentic}. These smaller frameworks decide only about their own level of work. Accepting a change therefore never authorises a release; only the gates of the macro framework do.
+The stage-gate process serves as the macro framework of this thesis. It steers the application as a whole and decides at each gate whether it may advance. Within individual stages, it adopts smaller frameworks that guide the detailed work. In stage~2, a lightweight V-shaped cycle adapted from Agile~V guides how the prototype is specified, built and evaluated \parencite{koch2026agile}. In stage~3 and for later updates, a fuller Agile-V cycle guides each change, and the SCOPE-V cycle guides each task within it \parencite{koch2026agile,koch2026agentic}. These smaller frameworks decide only about their own level of work. Accepting a change therefore never authorises a release; only the gates of the macro framework do.
 
 \paragraph{Gate Decisions}
 
@@ -1638,16 +1653,22 @@ Every gate uses the same five outcomes:
     \item \textbf{Stop:} the work ends, and what was learned is recorded.
 \end{itemize}
 
-Decisions are based on evidence, not on impressions. This follows the acceptance rule of Agentic Agile-V: AI-generated output is accepted not because it looks plausible but because it provides the evidence required for its risk class \parencite{koch2026agentic}. Each stage therefore has \emph{entry criteria}, which the previous gate must have confirmed, and \emph{exit criteria}, which the next gate checks. Stop criteria, such as an exceeded budget, are defined at the start. Although the stages are shown in sequence, work may return to an earlier stage when new findings require it, as MeRGE also recommends \parencite{fetzer2026}.
+Decisions are based on evidence, not on impressions. This follows the acceptance rule of Agentic Agile-V: AI-generated output is accepted not because it looks plausible but because it provides the evidence required for its risk class \parencite{koch2026agentic}. The gates apply the same rule to the application as a whole, with the required evidence set by its risk tier. Each stage therefore has \emph{entry criteria}, which the previous gate must have confirmed, and \emph{exit criteria}, which the next gate checks. Stop criteria, such as an exceeded budget, are defined at the start. Although the stages are shown in sequence, work may return to an earlier stage when new findings require it, as MeRGE also recommends \parencite{fetzer2026}.
 
 \paragraph{Risk-Based Decisions}
 
-How strict a gate is depends on risk. Each application receives a risk
-tier and each change a risk class, as defined in the risk-tier scheme
-(Section~\ref{sec:risk-tiers}). The IT reviewer sets a provisional target
-tier at G1, confirms it at G2 and reviews it at later gates. Until G2,
-all work runs under R0 conditions. The tier decides who must approve and
-how much evidence is required.
+How strict a decision is depends on risk, as defined in the risk-tier
+scheme (Section~\ref{sec:risk-tiers}). The application receives a risk
+tier: the IT reviewer sets a provisional target tier at G1, confirms it
+at G2 and reviews it at later gates. Until G2, all work runs under R0
+conditions, whatever the target tier. The tier decides who must approve
+at the gates and how much evidence is required. Each change receives a
+risk class at Checkpoint~A, which decides how closely the change is
+reviewed at Checkpoint~B. A change may receive a higher class than the
+tier of its application, for example an R3 change to the role logic of
+an R2 application; this deepens the review of that change only. The tier
+is reassessed only if a change alters the impact of the application as
+a whole.
 
 \paragraph{Roles and Responsibilities}
 
@@ -1681,7 +1702,7 @@ The stages, gates, roles and tiers described here combine ideas from the cited s
 
 \paragraph{Stage 1: Screen and Scope}
 
-The first stage decides, with little effort, whether an idea should be pursued through citizen development and under which limits. It produces a short description of the idea, a provisional risk tier and the boundaries for the prototype experiment in stage~2. The citizen developer and the business owner describe the idea. The IT reviewer assesses its technical fit and sets the risk tier. Specialists are involved only when the screening raises legal or data protection questions.
+The first stage decides, with little effort, whether an idea should be pursued through citizen development and under which limits. It produces a short description of the idea, a provisional target tier and the boundaries for the prototype experiment in stage~2. The citizen developer and the business owner describe the idea. The IT reviewer assesses its technical fit and sets the provisional target tier. Specialists are involved only when the screening raises legal or data protection questions.
 
 \subparagraph{Problem and Business Case}
 
@@ -1750,7 +1771,7 @@ The capabilities of citizen developers should not be seen as fixed. With GenAI i
 
 \subparagraph{Infrastructure}
 
-Citizen development is only safe when the technical and governance infrastructure described in Section~XX is in place. Citizen developers need controlled sandboxes and separate environments. Where a platform lacks such safeguards, organisations must add access controls and review gates \parencite{viljoen2024}. A practitioner in the same study warned that people with little programming experience and unrestricted access to company data could unintentionally expose sensitive data \parencite{viljoen2024}. Stage~1 therefore checks whether the infrastructure required for the risk tier is available. If it is not, the idea is restricted to mock-ups with synthetic data or stopped.
+Citizen development is only safe when the technical and governance infrastructure described in Section~XX is in place. Citizen developers need controlled sandboxes and separate environments. Where a platform lacks such safeguards, organisations must add access controls and review gates \parencite{viljoen2024}. A practitioner in the same study warned that people with little programming experience and unrestricted access to company data could unintentionally expose sensitive data \parencite{viljoen2024}. Stage~1 therefore checks whether the infrastructure required for the risk tier is available (Table~\ref{tab:tier-consequences}). If it is not, the idea is restricted to a lower tier, for example to mock-ups with synthetic data, handed over or stopped.
 
 
 \subparagraph{Experiment Boundaries and Gate G1}
@@ -1772,7 +1793,7 @@ At G1, the decision-makers check whether:
     \item the experiment boundaries and stop criteria are agreed.
 \end{itemize}
 
-If all criteria are met, the idea moves to stage~2 as an R0 experiment. Otherwise, the gate decides to revise, restrict, hand over or stop. The depth of the screening depends on the risk: for a small R0 idea, a one-page description and a short conversation with IT are sufficient.
+If all criteria are met, the idea moves to stage~2 as an R0 experiment. Otherwise, the gate decides to revise, restrict, hand over or stop. The depth of the screening depends on the risk: for a small idea with target tier R1, a one-page description and a short conversation with IT are sufficient.
 
 \paragraph{Stage 2: Prototype}
 
@@ -1825,17 +1846,17 @@ On the right side, the citizen developer walks through the specified scenarios w
 \subparagraph{The Agile V Development Framework}
 
 
-In the production-development stage, the framework uses a more complete version of Agile V than in the prototype stage. Each feature or larger change now goes through its own small V-cycle. This cycle includes independent testing, traceability (a clear link between each requirement and its tests) and documented evidence. It combines two elements from earlier work. From Agile V, it takes the idea that separate AI agents build the software, write the tests, run the tests and collect the evidence \parencite{koch2026agile}. From Agentic Agile-V, it takes the six-step SCOPE-V task cycle \parencite{koch2026agentic}. These are complemented by spec-driven development, contracts and practitioner approaches to planning, which are introduced below. How these elements are combined, assigned to agents and placed within the stage-gate lifecycle is a design choice of this thesis. It is important to note that the framework builds upon the technical and governance setup provided by the company explained in Section TBD!!.
+In the production-development stage, the framework uses a more complete version of Agile V than in the prototype stage. Each change, such as a new feature, a larger extension or a bug fix, now goes through its own small V-cycle. This cycle includes independent testing, traceability (a clear link between each requirement and its tests) and documented evidence. It combines two elements from earlier work. From Agile V, it takes the idea that separate AI agents build the software, write the tests, run the tests and collect the evidence \parencite{koch2026agile}. From Agentic Agile-V, it takes the six-step SCOPE-V task cycle \parencite{koch2026agentic}. These are complemented by spec-driven development, contracts and practitioner approaches to planning, which are introduced below. How these elements are combined, assigned to agents and placed within the stage-gate lifecycle is a design choice of this thesis. It is important to note that the framework builds upon the technical and governance setup provided by the company explained in Section TBD!!.
 
 
-The cycle is based on three principles. The first is spec-driven development (SDD). Every meaningful change starts from a written specification that is stored and versioned together with the code. This specification acts as the contract between people and AI agents. Code, tests and documentation are derived from it. If the specification and the code disagree, the specification counts as correct \parencite{diaz2026}. Furthermore, the specification documentation are complemented by a shared overall plan for the overall change of the agile V cycle \parencite{lopopolo2026HarnessEngineering}. The plan, kept in a file such as plan.md, is created by a Planning Agent from the specification once it has been approved at Checkpoint A. The third principle is contract- and test-based verification. A change is accepted because independent tests and other evidence show that it matches the specification, not because the result looks convincing \parencite{koch2026agentic}. The V-shape links the principles: the left side creates the specification, the bottom builds the change, and the right side checks that the change matches the specification and all the updates are then saved in the plan.md. Most sources behind these ideas are conceptual or based on practitioner experience, and they have not been tested with non-technical users. Their suitability is therefore evaluated through ADR.
+The cycle is based on three principles. The first is spec-driven development (SDD). Every meaningful change starts from a written specification that is stored and versioned together with the code. This specification acts as the contract between people and AI agents. Code, tests and documentation are derived from it. If the specification and the code disagree, the specification counts as correct \parencite{diaz2026}. Furthermore, the specification documents are complemented by a shared plan for each change \parencite{lopopolo2026HarnessEngineering}. The plan, kept in a file such as plan.md, is created by a Planning Agent from the specification once it has been approved at Checkpoint A. The third principle is contract- and test-based verification. A change is accepted because independent tests and other evidence show that it matches the specification, not because the result looks convincing \parencite{koch2026agentic}. The V-shape links the principles: the left side creates the specification, the bottom builds the change, and the right side checks that the change matches the specification and all the updates are then saved in the plan.md. Most sources behind these ideas are conceptual or based on practitioner experience, and they have not been tested with non-technical users. Their suitability is therefore evaluated through ADR.
 
 As shown in the prototype stage, non-technical participants can judge whether software looks and behaves as intended. A stricter structure is needed at this stage because what has to be checked changes. They cannot judge whether the code behind it is correct, secure or easy to maintain. In other words, citizen developers can mainly check functional requirements, that is, what the software does. Especially with specification-driven development (SDD), a clear specification allows reviewers to check whether the evidence demonstrates that the requirements have been met, instead of trying to work out the intended behaviour from the code \parencite{diaz2026}. Still most non-functional requirements, such as security, data protection, reliability and maintainability, are hidden in the code and lie beyond their judgement. Checking these qualities must therefore be shifted as far as possible to other means: the technical setup provided by the company and department, such as approved platforms and automated checks; AI agents that test and analyse the code; and, where needed, supporting stakeholders such as IT, information security or data protection.
 
 To support the with non-functional requirements, Agile V gives two different jobs to two different agents. A Test Designer writes tests based only on the requirements and never sees the code, while a separate Build Agent writes the code. This separation is meant to prevent tests that simply confirm what the code happens to do instead of what it should do \parencite{koch2026agile}. Confirmed behaviour is kept in tests that every later change must also pass. In this way, quality can build up over time, which is how the framework aims at compounding correctness (see Figure~\ref{fig:compounding-error-correctness}).
 
 
-The cycle operates on three nested levels. In Agentic Agile-V, Agile V steers the project as a whole, while SCOPE-V steers the individual tasks carried out by agents \parencite{koch2026agentic}. In this thesis, the stage-gate lifecycle takes over the steering of the application as a whole, including investment, ownership, pilot and release. Agile V moves one level down and steers how each single change is specified, built and accepted during the engineering and verification stage. SCOPE-V remains at the lowest level and steers how the Build Agent carries out each small task within a change. For example, in an HR leave-request tool, the stage-gate lifecycle decides whether the tool may be piloted, a V-cycle handles the feature for submitting a request, and SCOPE-V handles single tasks within it, such as ensuring that the leave balance cannot become negative. A V-cycle therefore ends when a tested change is accepted, not when the application is released; the release remains a decision of the stage-gate lifecycle (see Figure~\ref{fig:adapted-agile-v-cycle}). 
+The three units of work defined in Section~\ref{sec:stage-gate-structure} determine where each framework applies. In Agentic Agile-V, Agile V steers the project as a whole, while SCOPE-V steers the individual tasks carried out by agents \parencite{koch2026agentic}. In this thesis, the stage-gate lifecycle takes over the steering of the application, including investment, ownership, pilot and release. Agile V therefore moves one level down and steers each change, while SCOPE-V remains at the level of tasks. A V-cycle ends when a tested change is accepted, not when the application is released (see Figure~\ref{fig:adapted-agile-v-cycle}). 
 
 
 \begin{figure}[htbp]
@@ -2015,7 +2036,9 @@ Table~\ref{tab:self-checks-vs-independent} summarises the difference.
 
 The other agents therefore work on the change as a whole, not on each task. The Test Designer Agent writes its tests once per change, based on the specification and the task contracts, while the Build Agent is building. When the Build Agent has finished all tasks, the Verification Agent runs these tests and the Auditing Agent then collects the evidence on the right side of the agile V framework. This matches the Agile V case study, where one cycle covered a whole piece of work with several requirements, not a single small task \parencite{koch2026agile}.
 
-This set-up has an advantage and a drawback. Only one agent works on each task, which keeps cost and effort low, and the independent checks happen where the change is accepted. However, mistakes that the Build Agent's own checks miss are only found after several tasks. For high-risk changes, the independent tests are therefore run after each task or after each milestone in the plan. This way of dividing the work between the agents is a design choice of this thesis. The test agent and the verification process will be explained in more detail in Section~TBD, as it is one of the most critical steps in vibe coding \parencite{bcgplatinion2026agentic}.
+This set-up has an advantage and a drawback. Only one agent works on each task, which keeps cost and effort low, and the independent checks happen where the change is accepted. However, mistakes that the Build Agent's own checks miss are only found after several tasks. For changes of risk class R3, the independent tests are therefore run after each task or after each milestone in the plan.
+% TODO(author): confirm R3 here (alternative: risk class R2 and higher).
+ This way of dividing the work between the agents is a design choice of this thesis. The test agent and the verification process will be explained in more detail in Section~TBD, as it is one of the most critical steps in vibe coding \parencite{bcgplatinion2026agentic}.
 
 
 The agents do not talk to each other directly. Instead, they coordinate through shared, versioned files: the specification, the plan, the tests and the test reports. Each agent starts in a fresh session, reads only the files its role allows and writes its results back to these files. The order in which the agents work is fixed by the V-cycle (planning, then building and test design, then verification, then auditing). No agent decides this order. The citizen developer starts each step with a prompt that they have reviewed. The Planning Agent can suggest these prompts or check prompts the citizen developer has written. Each prompt mainly states which role the agent takes, which files it should read and what result it should produce. Because the prompts are concise, the citizen developer can understand them fully and review them quickly. They then check the outcome of each step before the next step begins.
@@ -2286,7 +2309,7 @@ In Agile~V, the responsible engineer holds final approval authority at the
 second human gate \parencite{koch2026agile}. How strict the approval is
 depends on the risk class of the change (Table~\ref{tab:change-classes}).
 
-The prototype stage of this framework corresponds to R0. Most changes made by
+Changes in the prototype stage correspond to risk class R0. Most changes made by
 citizen developers are expected to fall under R2 and therefore require
 mandatory approval by a technical reviewer.
 
@@ -2418,8 +2441,8 @@ with care.
 
 \textbf{Responsibility depends on risk.} In stage~3, the citizen developer
 manages most of the Agile~V cycle. In stage~4, responsibility for the
-technical tests moves to IT, depending on the risk tier that was set at G1 and
-confirmed at later gates. This shift reflects the different kind of evidence
+technical tests moves to IT, depending on the risk tier of the application, which was set provisionally
+at G1, confirmed at G2 and reviewed at later gates. This shift reflects the different kind of evidence
 now required. Citizen developers can judge whether software looks and behaves
 as intended, but not whether it is secure or reliable
 \parencite{kobiella2026}. For low-risk applications, IT provides a standard
@@ -2648,7 +2671,7 @@ than from the code.
     \hline
     \textbf{Cause} & \textbf{Return path} & \textbf{Responsible} \\
     \hline
-    Error in the code & New change in stage~3. A test that reproduces the
+    Error in the code & New change through the Agile~V cycle of stage~3. A test that reproduces the
         error is written first, then the smallest possible fix
         \parencite{koch2026agentic} & Citizen developer and agents; IT
         approval \\
@@ -2696,7 +2719,7 @@ research on low-code development recommends that IT co-develops or leads
 \parencite{viljoen2024}.
 
 \textbf{Testing later updates.} Changes made during the pilot and operation
-pass through stage~3 again and then through a reduced version of stage~4. The
+pass through the Agile~V cycle of stage~3 and then through a reduced version of stage~4. The
 automated tests (smoke test, full regression suite and scans) always run in
 full, because they are cheap. The human tests (end-to-end checks by the
 citizen developer, role reviews by IT and user acceptance) are repeated only
